@@ -3,12 +3,7 @@ package com.mathroule.chifootmi.game;
 import com.mathroule.chifootmi.Builder;
 
 /**
- * Represent a match.
- *
- * @author Mathieu Rul <mathroule@gmail.com>
- * @project Chifootmi
- * @created 16/03/2016
- * @since 1.0
+ * Used to play a match.
  */
 public class Match {
 
