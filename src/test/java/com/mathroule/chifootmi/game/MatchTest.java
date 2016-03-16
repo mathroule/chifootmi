@@ -6,11 +6,6 @@ import static org.junit.Assert.*;
 
 /**
  * Test the match class.
- *
- * @author Mathieu Rul <mathroule@gmail.com>
- * @project Chifootmi
- * @created 16/03/2016
- * @since 1.0
  */
 public class MatchTest {
 
