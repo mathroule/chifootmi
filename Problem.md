@@ -1,5 +1,6 @@
-Rock, Paper, Scissors
+# Rock, Paper, Scissors
 
+```
 User Story Front
 +--------------------------------------------------+
 |                                                  |
@@ -26,7 +27,7 @@ User Story Back
 |                                                  |
 | - Doesn't necessarily need a flashy GUI          |
 |   (can be simple)                                |
-| - Use the language of your application                                       |
+| - Use the language of your application           |
 | - Libs / external modules should only be used    |
 |   for tests                                      |
 | - Using best in industry agile engineering       |
@@ -51,3 +52,4 @@ It took us around 2 - 5 hours of effort when doing this, so please use this as a
 ·         Submissions should be in the language of the role you applied for.
 ·         Any indicator of design (DDD, or design patterns) would make us smile.
 Thank you and good luck 
+```
