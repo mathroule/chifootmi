@@ -22,6 +22,26 @@ public class RuleTest {
     }
 
     @Test
+    public void testRuleWithNullWinningWeapon() throws Exception {
+        try {
+            new Rule(null, "cuts", new Paper());
+            fail("A NullPointerException should be thrown");
+        } catch (NullPointerException exception) {
+            assertEquals("Winning weapon should not be null", exception.getMessage());
+        }
+    }
+
+    @Test
+    public void testRuleWithNullLoosingWeapon() throws Exception {
+        try {
+            new Rule(new Paper(), "cuts", null);
+            fail("A NullPointerException should be thrown");
+        } catch (NullPointerException exception) {
+            assertEquals("Loosing weapon should not be null", exception.getMessage());
+        }
+    }
+
+    @Test
     public void testRuleWithSameWeapons() throws Exception {
         try {
             new Rule(new Paper(), "cuts", new Paper());

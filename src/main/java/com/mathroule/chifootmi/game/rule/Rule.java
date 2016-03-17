@@ -23,34 +23,41 @@ public class Rule {
     private final Weapon looser;
 
     /**
-     * Rule constructor.
+     * Rule constructor with a weapon beating another weapon by an action.
      *
-     * @param winner the winner weapon of the rule
-     * @param action the action of the rule
-     * @param looser the looser weapon of the rule
+     * @param winning the winning weapon of the rule
+     * @param action  the action of the rule
+     * @param loosing the loosing weapon of the rule
      */
-    public Rule(Weapon winner, String action, Weapon looser) {
-        // TODO check null values
+    public Rule(Weapon winning, String action, Weapon loosing) {
+        // Check winning weapon is not null
+        if (winning == null) {
+            throw new NullPointerException("Winning weapon should not be null");
+        }
+
+        // Check loosing weapon is not null
+        if (loosing == null) {
+            throw new NullPointerException("Loosing weapon should not be null");
+        }
 
         // Check weapons are different
-        if (winner.equals(looser)) {
+        if (winning.equals(loosing)) {
             throw new IllegalArgumentException("Weapons should be different");
         }
 
-        this.winner = winner;
+        this.winner = winning;
         this.action = action;
-        this.looser = looser;
+        this.looser = loosing;
     }
 
     /**
-     * Check if the rule is respected.
+     * Check if the rule is respected for two weapons.
      *
      * @param weapon1 the first weapon
      * @param weapon2 the second weapon
      * @return true if the first weapon win versus the second weapon, false otherwise
      */
     public boolean isRespected(Weapon weapon1, Weapon weapon2) {
-        // TODO check null values
         return winner.equals(weapon1) && looser.equals(weapon2);
     }
 
