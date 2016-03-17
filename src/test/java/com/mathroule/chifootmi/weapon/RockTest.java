@@ -50,7 +50,6 @@ public class RockTest {
         assertFalse(rock1.equals(paper2));
         assertFalse(paper2.equals(rock2));
         assertFalse(rock2.equals(paper2));
-
     }
 
     @Test
