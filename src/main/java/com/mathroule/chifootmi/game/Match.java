@@ -4,7 +4,7 @@ import com.mathroule.chifootmi.Builder;
 import com.mathroule.chifootmi.player.Player;
 
 /**
- * Used to play a match.
+ * Implement a match with two players.
  */
 public class Match {
 
