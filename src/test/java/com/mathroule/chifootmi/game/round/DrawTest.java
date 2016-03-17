@@ -11,6 +11,7 @@ import static org.junit.Assert.fail;
  * Test a draw round between two players.
  */
 public class DrawTest {
+
     private Human human = new Human("Toto");
 
     private Computer computer = new Computer();
@@ -32,14 +33,14 @@ public class DrawTest {
     @Test
     public void tesDrawWithInvalidRound() throws Exception {
         try {
-            new Draw(0, null, computer);
+            new Draw(0, human, computer);
             fail("An IllegalArgumentException should be thrown");
         } catch (IllegalArgumentException exception) {
             assertEquals("Round number must be equal or greater than one", exception.getMessage());
         }
 
         try {
-            new Draw(-5, null, computer);
+            new Draw(-5, human, computer);
             fail("An IllegalArgumentException should be thrown");
         } catch (IllegalArgumentException exception) {
             assertEquals("Round number must be equal or greater than one", exception.getMessage());
