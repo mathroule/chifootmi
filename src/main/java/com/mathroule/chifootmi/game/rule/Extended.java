@@ -4,10 +4,13 @@ package com.mathroule.chifootmi.game.rule;
 import com.mathroule.chifootmi.weapon.*;
 
 /**
- * Implement the basic games rules (i.e. Rock-paper-scissors-lizard-Spock).
+ * Implement the extended games rules (i.e. Rock-paper-scissors-lizard-Spock).
  */
 public class Extended extends Basic {
 
+    /**
+     * Constructor of the extended game rules (i.e. Rock-paper-scissors-lizard-Spock).
+     */
     public Extended() {
         super();
 
@@ -26,7 +29,7 @@ public class Extended extends Basic {
         // Lizard poisons Spock
         this.add(new Rule(new Lizard(), "poisons", new Spock()));
 
-        // Spock smashes Scissors
+        // Spock smashes scissors
         this.add(new Rule(new Spock(), "smashes", new Scissors()));
 
         // Spock vaporizes rock
