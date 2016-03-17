@@ -4,7 +4,8 @@ import com.mathroule.chifootmi.player.Computer;
 import com.mathroule.chifootmi.player.Human;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 /**
  * Test the match class.
