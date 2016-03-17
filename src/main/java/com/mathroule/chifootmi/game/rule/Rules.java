@@ -16,7 +16,7 @@ public abstract class Rules extends ArrayList<Rule> implements IRules {
      * @param weapon2 the second weapon
      * @return the winning rule, null if no rules matched
      */
-    public Rule getWiningRule(Weapon weapon1, Weapon weapon2) {
+    public final Rule getWiningRule(Weapon weapon1, Weapon weapon2) {
         for (Rule rule : this) {
             if (rule.isRespected(weapon1, weapon2)) {
                 return rule;
@@ -35,7 +35,7 @@ public abstract class Rules extends ArrayList<Rule> implements IRules {
      * A positive integer if the first weapon beats the second weapon.
      */
     @Override
-    public int compare(Weapon o1, Weapon o2) {
+    public final int compare(Weapon o1, Weapon o2) {
         // Check if weapons are not null
         if (o1 == null || o2 == null) {
             throw new NullPointerException("Weapons should not be null");
