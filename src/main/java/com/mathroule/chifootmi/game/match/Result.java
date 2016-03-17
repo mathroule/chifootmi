@@ -33,7 +33,7 @@ public class Result extends Versus {
 
     @Override
     public String toString() {
-        return "Match " + super.toString()
+        return "--- Match " + super.toString() + " ---"
                 + "\nDraw " + draw + " times"
                 + "\n" + player1 + " wins " + player1.getWin() + " times"
                 + "\n" + player2 + " wins " + player2.getWin() + " times";
