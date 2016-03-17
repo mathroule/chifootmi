@@ -20,26 +20,20 @@ public class Computer extends Player {
     };
 
     /**
-     * Random number generator used for name generation.
-     */
-    private static final Random random = new Random();
-
-    /**
      * Computer player constructor using random name.
      */
     public Computer() {
-        super(AVAILABLE_NAMES[random.nextInt(AVAILABLE_NAMES.length - 1)]);
+        super(AVAILABLE_NAMES[new Random().nextInt(AVAILABLE_NAMES.length)]);
     }
 
     /**
-     * Get a random weapon from a list of weapons.
+     * Get a random weapon from a list available of weapons.
      *
-     * @param weapons the list of weapons
+     * @param weapons the list available of weapons
      * @return the selected weapon
      */
     public Weapon getRandomWeapon(List<Weapon> weapons) {
-        // TODO improve randomness
-        int index = random.nextInt(weapons.size() - 1);
+        int index = new Random().nextInt(weapons.size());
         return weapons.get(index);
     }
 }
