@@ -11,8 +11,6 @@ import java.util.List;
  */
 public abstract class Rules extends ArrayList<Rule> implements Comparator<Weapon> {
 
-    // TODO use decorator
-
     /**
      * Get the available weapons of a game rules.
      *

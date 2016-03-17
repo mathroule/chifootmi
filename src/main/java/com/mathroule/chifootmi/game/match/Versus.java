@@ -1,4 +1,4 @@
-package com.mathroule.chifootmi.game;
+package com.mathroule.chifootmi.game.match;
 
 import com.mathroule.chifootmi.game.player.Player;
 

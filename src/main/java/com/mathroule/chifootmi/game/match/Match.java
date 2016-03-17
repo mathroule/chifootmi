@@ -1,4 +1,4 @@
-package com.mathroule.chifootmi.game;
+package com.mathroule.chifootmi.game.match;
 
 import com.mathroule.chifootmi.Builder;
 import com.mathroule.chifootmi.game.player.Player;
@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Implement a match between two players.
  */
-public class Match extends Versus {
+public class Match extends RuledVersus {
 
     /**
      * Number of round in match.
@@ -30,11 +30,6 @@ public class Match extends Versus {
     private final boolean hasIA; // TODO move in computer
 
     /**
-     * Rules of the match.
-     */
-    private final Rules rules; // TODO factorize with round, use pattern
-
-    /**
      * Current round of the match.
      */
     private int currentRound = 1;
@@ -50,7 +45,7 @@ public class Match extends Versus {
      * @param builder the match builder
      */
     private Match(MatchBuilder builder) {
-        super(builder.player1, builder.player2);
+        super(builder.player1, builder.player2, builder.rules);
 
         // Check rules are not null
         if (builder.rules == null) {
@@ -71,7 +66,6 @@ public class Match extends Versus {
         this.round = builder.round;
         this.rounds = new ArrayList<>(round);
         this.hasIA = builder.hasIA;
-        this.rules = builder.rules;
     }
 
     /**
