@@ -1,6 +1,5 @@
 package com.mathroule.chifootmi.game.match;
 
-import com.mathroule.chifootmi.game.match.Round;
 import com.mathroule.chifootmi.game.player.Computer;
 import com.mathroule.chifootmi.game.player.Human;
 import com.mathroule.chifootmi.game.rule.Basic;
@@ -107,7 +106,7 @@ public class RoundTest {
             new Round(1, basic, human, null, computer, null);
             fail("A NullPointerException should be thrown");
         } catch (NullPointerException exception) {
-            assertEquals("Weapons should not be null", exception.getMessage());
+            assertEquals("Weapon 1 should not be null", exception.getMessage());
         }
     }
 
