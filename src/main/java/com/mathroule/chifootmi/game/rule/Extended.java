@@ -10,7 +10,7 @@ import java.util.List;
  */
 public final class Extended extends Rules {
 
-    private final IRules base;
+    private final Rules base;
 
     /**
      * Constructor of the extended game rules (i.e. Rock-paper-scissors-lizard-Spock).
