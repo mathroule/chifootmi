@@ -7,8 +7,9 @@ import java.util.Random;
 
 /**
  * Implementation class for a computer player.
+ * TODO add AI to computer
  */
-public class Computer extends Player {
+public final class Computer extends Player {
 
     /**
      * Computer available names.

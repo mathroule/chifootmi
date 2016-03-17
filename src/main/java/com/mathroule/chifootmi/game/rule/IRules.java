@@ -15,7 +15,7 @@ public interface IRules extends Comparator<Weapon> {
      *
      * @return the list of available weapons
      */
-    public abstract List<Weapon> getAvailableWeapons();
+    List<Weapon> getAvailableWeapons();
 
     /**
      * Get the winning rule for the first weapon1 vs the second weapon.
@@ -24,7 +24,7 @@ public interface IRules extends Comparator<Weapon> {
      * @param weapon2 the second weapon
      * @return the winning rule, null if no rules matched
      */
-    public Rule getWiningRule(Weapon weapon1, Weapon weapon2);
+    Rule getWiningRule(Weapon weapon1, Weapon weapon2);
 
     /**
      * Compare weapon1 vs weapon2.
@@ -36,5 +36,5 @@ public interface IRules extends Comparator<Weapon> {
      * A positive integer if the first weapon beats the second weapon.
      */
     @Override
-    public int compare(Weapon o1, Weapon o2);
+    int compare(Weapon o1, Weapon o2);
 }

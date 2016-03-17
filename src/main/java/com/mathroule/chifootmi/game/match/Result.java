@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Implement a match result;
  */
-public class Result extends Versus {
+public final class Result extends Versus {
 
     private int draw = 0;
 

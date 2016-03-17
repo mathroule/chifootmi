@@ -3,7 +3,7 @@ package com.mathroule.chifootmi.game.weapon;
 /**
  * Implementation class for a Spock weapon.
  */
-public class Spock extends Weapon {
+public final class Spock extends Weapon {
 
     public Spock() {
         super("spock");

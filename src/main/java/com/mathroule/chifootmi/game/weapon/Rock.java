@@ -3,7 +3,7 @@ package com.mathroule.chifootmi.game.weapon;
 /**
  * Implementation class for a rock weapon.
  */
-public class Rock extends Weapon {
+public final class Rock extends Weapon {
 
     public Rock() {
         super("rock");
