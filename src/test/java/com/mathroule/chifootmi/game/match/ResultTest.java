@@ -35,7 +35,7 @@ public class ResultTest {
             rounds.add(new Round(2, basic, human1, new Scissors(), human2, new Paper()));
             Result result = new Result(human1, human2, rounds);
             assertEquals(1, result.getDraw());
-            assertEquals("Match Tom vs Toto\n" +
+            assertEquals("--- Match Tom vs Toto ---\n" +
                     "Draw 1 times\n" +
                     "Tom wins 1 times\n" +
                     "Toto wins 0 times", result.toString());
