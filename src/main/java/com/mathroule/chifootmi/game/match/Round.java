@@ -1,4 +1,4 @@
-package com.mathroule.chifootmi.game;
+package com.mathroule.chifootmi.game.match;
 
 import com.mathroule.chifootmi.game.player.Player;
 import com.mathroule.chifootmi.game.rule.Rule;
@@ -8,7 +8,7 @@ import com.mathroule.chifootmi.game.weapon.Weapon;
 /**
  * Abstract a round of a match between two players.
  */
-public class Round extends Versus {
+public class Round extends RuledVersus {
 
     /**
      * Number of the round.
@@ -24,11 +24,6 @@ public class Round extends Versus {
      * The second player weapon.
      */
     private final Weapon weapon2;
-
-    /**
-     * The round rules.
-     */
-    private final Rules rules;
 
     /**
      * The used rule to determinate the issue of the round.
@@ -59,26 +54,33 @@ public class Round extends Versus {
      * @param weapon2 the second player weapon for the round
      */
     public Round(int round, Rules rules, Player player1, Weapon weapon1, Player player2, Weapon weapon2) {
-        super(player1, player2);
+        super(player1, player2, rules);
 
         // Check round number
         if (round < 1) {
             throw new IllegalArgumentException("Round number must be equal or greater than one");
         }
 
-        // Check rules are not null
-        if (rules == null) {
-            throw new NullPointerException("Rules should not be null");
+        // Check weapon 1 is not null
+        if (player1 == null) {
+            throw new NullPointerException("Weapon 1 should not be null");
+        }
+
+        // Check weapon 2 is not null
+        if (player2 == null) {
+            throw new NullPointerException("Weapon 2 should not be null");
         }
 
         // Get round result and determinate winner and looser or draw
         int comparison = rules.compare(weapon1, weapon2);
-
-        // TODO improve
         if (comparison > 0) {
             result = Result.PLAYER_1_WIN;
+            player1.won();
+            player2.loose();
         } else if (comparison < 0) {
             result = Result.PLAYER_2_WIN;
+            player2.won();
+            player1.loose();
         } else {
             result = Result.DRAW;
         }
@@ -90,13 +92,8 @@ public class Round extends Versus {
         if (usedRule == null) {
             usedRule = rules.getWiningRule(weapon2, weapon1);
         }
-        rule = usedRule;
-
-
-        // TODO check null weapons and rules values
-
+        this.rule = usedRule;
         this.round = round;
-        this.rules = rules;
         this.weapon1 = weapon1;
         this.weapon2 = weapon2;
     }

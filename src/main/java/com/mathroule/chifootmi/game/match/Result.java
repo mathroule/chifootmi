@@ -1,4 +1,4 @@
-package com.mathroule.chifootmi.game;
+package com.mathroule.chifootmi.game.match;
 
 import com.mathroule.chifootmi.game.player.Player;
 
@@ -9,16 +9,10 @@ import java.util.List;
  */
 public class Result extends Versus {
 
-    /**
-     * Rounds of the match.
-     */
-    private final List<Round> rounds;
-
     private int draw = 0;
 
     public Result(final Player player1, final Player player2, final List<Round> rounds) {
         super(player1, player2);
-        this.rounds = rounds;
 
         // Compute the count of draw rounds
         for (Round round : rounds) {
@@ -26,10 +20,6 @@ public class Result extends Versus {
                 draw++;
             }
         }
-    }
-
-    public List<Round> getRounds() {
-        return rounds;
     }
 
     public int getDraw() {

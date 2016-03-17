@@ -1,5 +1,7 @@
-package com.mathroule.chifootmi.game;
+package com.mathroule.chifootmi.game.match;
 
+import com.mathroule.chifootmi.game.match.Match;
+import com.mathroule.chifootmi.game.match.Round;
 import com.mathroule.chifootmi.game.player.Computer;
 import com.mathroule.chifootmi.game.player.Human;
 import com.mathroule.chifootmi.game.weapon.Paper;

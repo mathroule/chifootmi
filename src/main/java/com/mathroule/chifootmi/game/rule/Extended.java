@@ -10,6 +10,8 @@ import java.util.List;
  */
 public class Extended extends Basic {
 
+    // TODO avoid dependency with basic
+
     /**
      * Constructor of the extended game rules (i.e. Rock-paper-scissors-lizard-Spock).
      */
