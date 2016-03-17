@@ -17,7 +17,6 @@ public abstract class Weapon {
 
     @Override
     public int hashCode() {
-        // TODO improve hash code generation
         return getName().hashCode();
     }
 
