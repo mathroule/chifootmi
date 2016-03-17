@@ -1,13 +1,17 @@
 package com.mathroule.chifootmi.game;
 
 import com.mathroule.chifootmi.Builder;
+import com.mathroule.chifootmi.game.round.Draw;
+import com.mathroule.chifootmi.game.round.Round;
+import com.mathroule.chifootmi.game.round.Won;
 import com.mathroule.chifootmi.game.rule.Basic;
+import com.mathroule.chifootmi.game.rule.Rule;
 import com.mathroule.chifootmi.game.rule.Rules;
 import com.mathroule.chifootmi.player.Player;
 import com.mathroule.chifootmi.weapon.Weapon;
 
 /**
- * Implement a match with two players.
+ * Implement a match between two players.
  */
 public class Match {
 
@@ -42,6 +46,11 @@ public class Match {
     private final Rules rules;
 
     /**
+     * Current round of the match.
+     */
+    private int currentRound = 1;
+
+    /**
      * Match constructor from a builder.
      *
      * @param builder the match builder
@@ -49,22 +58,22 @@ public class Match {
     private Match(MatchBuilder builder) {
         // Check player 1 is not null
         if (builder.player1 == null) {
-            throw new IllegalArgumentException("Player 1 should not be null");
+            throw new NullPointerException("Player 1 should not be null");
         }
 
         // Check player 2 is not null
         if (builder.player2 == null) {
-            throw new IllegalArgumentException("Player 2 should not be null");
-        }
-
-        // Check rules are not null
-        if (builder.rules == null) {
-            throw new IllegalArgumentException("Rules should not be null");
+            throw new NullPointerException("Player 2 should not be null");
         }
 
         // Check players are different
         if (builder.player1.equals(builder.player2)) {
             throw new IllegalArgumentException("Players should be different");
+        }
+
+        // Check rules are not null
+        if (builder.rules == null) {
+            throw new NullPointerException("Rules should not be null");
         }
 
         // Check number of round
@@ -131,16 +140,46 @@ public class Match {
     }
 
     /**
+     * Get the match has remaining round value.
+     *
+     * @return true if the match has remaining round, false otherwise
+     */
+    public boolean hasRemainingRound() {
+        return currentRound <= round;
+    }
+
+    /**
      * Play a round with players weapons.
      *
      * @param weapon1 the player 1 weapon
      * @param weapon2 the player 2 weapon
-     * @return the winning player, null in case of a draw
+     * @return the round
      */
-    public Player playRound(Weapon weapon1, Weapon weapon2) {
-        // TODO check if remains round
+    public Round playRound(Weapon weapon1, Weapon weapon2) {
+        if (!hasRemainingRound()) {
+            throw new UnsupportedOperationException("No more rounds to play");
+        }
+
+        // Get round result and determinate winner and looser or draw
         int result = rules.compare(weapon1, weapon2);
-        return result > 0 ? player1 : (result < 0 ? player2 : null);
+        Player winner = result > 0 ? player1 : (result < 0 ? player2 : null);
+
+        // Try to get used rule from normal case: first weapon vs second weapon
+        Rule rule = rules.getWiningRule(weapon1, weapon2);
+
+        // Otherwise, try to get used rule from inverted case: second weapon vs first weapon
+        if (rule == null) {
+            rule = rules.getWiningRule(weapon2, weapon1);
+        }
+
+        // Otherwise it's a draw
+        if (rule == null) {
+            // Return draw round result
+            return new Draw(currentRound++, player1, player2);
+        }
+
+        // Return win round result
+        return new Won(currentRound++, player1, player2, winner, rule.toString());
     }
 
     /**

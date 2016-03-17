@@ -30,6 +30,8 @@ public class Rule {
      * @param looser the looser weapon of the rule
      */
     public Rule(Weapon winner, String action, Weapon looser) {
+        // TODO check null values
+
         // Check weapons are different
         if (winner.equals(looser)) {
             throw new IllegalArgumentException("Weapons should be different");
@@ -48,6 +50,7 @@ public class Rule {
      * @return true if the first weapon win versus the second weapon, false otherwise
      */
     public boolean isRespected(Weapon weapon1, Weapon weapon2) {
+        // TODO check null values
         return winner.equals(weapon1) && looser.equals(weapon2);
     }
 
