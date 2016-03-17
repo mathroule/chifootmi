@@ -14,9 +14,6 @@ import java.util.List;
  */
 public class Basic extends Rules {
 
-    // TODO @see: https://en.wikipedia.org/wiki/Interface_segregation_principle
-    // TODO @see: https://en.wikipedia.org/wiki/Dependency_inversion_principle
-
     /**
      * Constructor of the basic game rules (i.e. Rock-paper-scissors).
      */

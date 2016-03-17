@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class Extended extends Basic {
 
-    // TODO avoid dependency with basic
+    // TODO avoid dependency with basic @see: https://en.wikipedia.org/wiki/Dependency_inversion_principle
 
     /**
      * Constructor of the extended game rules (i.e. Rock-paper-scissors-lizard-Spock).

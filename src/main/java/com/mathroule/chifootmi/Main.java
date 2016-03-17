@@ -91,7 +91,7 @@ public class Main {
                                 move = scanner.nextInt();
                             }
                         } while (move < 1 || weapons.size() < move);
-                        Weapon humanWeapon = weapons.get(move - 1); // TODO check param is valid
+                        Weapon humanWeapon = weapons.get(move - 1);
 
                         // Generate computer weapon
                         Weapon computerWeapon = computer.getRandomWeapon(weapons);
