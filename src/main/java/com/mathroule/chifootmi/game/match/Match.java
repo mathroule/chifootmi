@@ -20,16 +20,6 @@ public class Match extends RuledVersus {
     private final int round;
 
     /**
-     * Match mode (Human vs Computer, Computer vs Computer ...).
-     */
-    private final Mode mode;
-
-    /**
-     * Use IA or not (Only if it's an Human vs Computer mode).
-     */
-    private final boolean hasIA; // TODO move in computer
-
-    /**
      * Current round of the match.
      */
     private int currentRound = 1;
@@ -57,15 +47,8 @@ public class Match extends RuledVersus {
             throw new IllegalArgumentException("Number of round must be greater than zero");
         }
 
-        // Allow IA mode only in mode is Human vs Computer
-        if (builder.hasIA && !builder.mode.equals(Mode.HUMAN_VS_COMPUTER)) {
-            throw new IllegalArgumentException("IA mode is only available in Human vs Computer match");
-        }
-
-        this.mode = builder.mode;
         this.round = builder.round;
         this.rounds = new ArrayList<>(round);
-        this.hasIA = builder.hasIA;
     }
 
     /**
@@ -75,24 +58,6 @@ public class Match extends RuledVersus {
      */
     public int getRound() {
         return round;
-    }
-
-    /**
-     * Get the match mode value.
-     *
-     * @return the match mode
-     */
-    public Mode getMode() {
-        return mode;
-    }
-
-    /**
-     * Get the IA enabled value.
-     *
-     * @return true if the IA is enabled, false otherwise
-     */
-    public boolean hasIA() {
-        return hasIA;
     }
 
     /**
@@ -140,14 +105,6 @@ public class Match extends RuledVersus {
     }
 
     /**
-     * The available match mode.
-     */
-    public enum Mode {
-        HUMAN_VS_COMPUTER,
-        COMPUTER_VS_COMPUTER
-    }
-
-    /**
      * The match builder.
      */
     public static class MatchBuilder implements Builder<Match> {
@@ -156,8 +113,6 @@ public class Match extends RuledVersus {
         private final Player player2;
         private Rules rules = new Basic();
         private int round = 1;
-        private Mode mode = Mode.COMPUTER_VS_COMPUTER;
-        private boolean hasIA = false;
 
         public MatchBuilder(Player player1, Player player2) {
             this.player1 = player1;
@@ -169,18 +124,8 @@ public class Match extends RuledVersus {
             return this;
         }
 
-        public MatchBuilder mode(Mode mode) {
-            this.mode = mode;
-            return this;
-        }
-
         public MatchBuilder round(int round) {
             this.round = round;
-            return this;
-        }
-
-        public MatchBuilder hasIA(boolean hasIA) {
-            this.hasIA = hasIA;
             return this;
         }
 
