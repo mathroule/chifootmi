@@ -12,7 +12,6 @@ public class HumanTest {
     @Test
     public void testHuman() throws Exception {
         Human human = new Human("Toto");
-
         assertEquals("Toto", human.getName());
     }
 }
