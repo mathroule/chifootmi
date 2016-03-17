@@ -1,7 +1,5 @@
 package com.mathroule.chifootmi.player;
 
-import com.mathroule.chifootmi.element.Element;
-
 import java.util.Random;
 
 /**
