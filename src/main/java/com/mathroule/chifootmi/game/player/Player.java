@@ -1,16 +1,15 @@
 package com.mathroule.chifootmi.game.player;
 
-import com.mathroule.chifootmi.game.weapon.Weapon;
-
-import java.util.List;
-import java.util.Random;
-
 /**
  * Abstract class for a game player.
  */
 public abstract class Player {
 
     private String name;
+
+    private int win;
+
+    private int loose;
 
     public Player(String name) {
         this.name = name;
@@ -23,5 +22,27 @@ public abstract class Player {
     @Override
     public String toString() {
         return name;
+    }
+
+    public int getLoose() {
+        return loose;
+    }
+
+    public int getWin() {
+        return win;
+    }
+
+    /**
+     * Increment win counter.
+     */
+    public void won() {
+        win++;
+    }
+
+    /**
+     * Increment lose counter.
+     */
+    public void loose() {
+        loose++;
     }
 }
