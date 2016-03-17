@@ -5,7 +5,7 @@ import com.mathroule.chifootmi.game.player.Player;
 /**
  * Implement a won round of a match between two players.
  */
-public class Won extends Round {
+public class Win extends Round {
 
     /**
      * Winner player of the round.
@@ -21,7 +21,7 @@ public class Won extends Round {
      * @param winner  the winner player of the round
      * @param result  the result of the round
      */
-    public Won(int round, Player player1, Player player2, Player winner, String result) {
+    public Win(int round, Player player1, Player player2, Player winner, String result) {
         super(round, player1, player2, result);
 
         // Check winner 1 is not null
@@ -33,6 +33,12 @@ public class Won extends Round {
         if (!winner.equals(player1) && !winner.equals(player2)) {
             throw new IllegalArgumentException("Winner should be a player of the round");
         }
+
+        // Increment winner count of win
+        winner.won();
+
+        // Increment looser count of loose
+        (winner.equals(player1) ? player2 : player1).loose();
 
         this.winner = winner;
     }
