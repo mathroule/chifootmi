@@ -14,12 +14,12 @@ public class Match {
     /**
      * Player 1 of the match.
      */
-    private Player player1;
+    private final Player player1;
 
     /**
      * Player 2 of the match.
      */
-    private Player player2;
+    private final Player player2;
 
     /**
      * Number of round in match.
