@@ -42,7 +42,7 @@ public abstract class Rules extends ArrayList<Rule> implements Comparator<Weapon
     public int compare(Weapon o1, Weapon o2) {
         // Check if weapons are not null
         if (o1 == null || o2 == null) {
-            throw new NullPointerException();
+            throw new NullPointerException("Weapons should not be null");
         }
 
         // Return draw if weapons are equals

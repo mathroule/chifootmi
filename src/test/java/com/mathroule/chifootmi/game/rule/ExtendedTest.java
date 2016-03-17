@@ -18,7 +18,7 @@ public class ExtendedTest {
             extended.compare(null, null);
             fail("A NullPointerException should be thrown");
         } catch (NullPointerException exception) {
-            assertEquals(null, exception.getMessage());
+            assertEquals("Weapons should not be null", exception.getMessage());
         }
     }
 
@@ -163,13 +163,13 @@ public class ExtendedTest {
             extended.compare(null, lizard);
             fail("A NullPointerException should be thrown");
         } catch (NullPointerException exception) {
-            assertEquals(null, exception.getMessage());
+            assertEquals("Weapons should not be null", exception.getMessage());
         }
         try {
             extended.compare(lizard, null);
             fail("A NullPointerException should be thrown");
         } catch (NullPointerException exception) {
-            assertEquals(null, exception.getMessage());
+            assertEquals("Weapons should not be null", exception.getMessage());
         }
     }
 
@@ -242,13 +242,13 @@ public class ExtendedTest {
             extended.compare(null, spock);
             fail("A NullPointerException should be thrown");
         } catch (NullPointerException exception) {
-            assertEquals(null, exception.getMessage());
+            assertEquals("Weapons should not be null", exception.getMessage());
         }
         try {
             extended.compare(spock, null);
             fail("A NullPointerException should be thrown");
         } catch (NullPointerException exception) {
-            assertEquals(null, exception.getMessage());
+            assertEquals("Weapons should not be null", exception.getMessage());
         }
     }
 }

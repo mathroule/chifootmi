@@ -20,7 +20,7 @@ public class BasicTest {
             basic.compare(null, null);
             fail("A NullPointerException should be thrown");
         } catch (NullPointerException exception) {
-            assertEquals(null, exception.getMessage());
+            assertEquals("Weapons should not be null", exception.getMessage());
         }
     }
 
@@ -69,13 +69,13 @@ public class BasicTest {
             basic.compare(null, rock);
             fail("A NullPointerException should be thrown");
         } catch (NullPointerException exception) {
-            assertEquals(null, exception.getMessage());
+            assertEquals("Weapons should not be null", exception.getMessage());
         }
         try {
             basic.compare(rock, null);
             fail("A NullPointerException should be thrown");
         } catch (NullPointerException exception) {
-            assertEquals(null, exception.getMessage());
+            assertEquals("Weapons should not be null", exception.getMessage());
         }
     }
 
@@ -124,13 +124,13 @@ public class BasicTest {
             basic.compare(null, paper);
             fail("A NullPointerException should be thrown");
         } catch (NullPointerException exception) {
-            assertEquals(null, exception.getMessage());
+            assertEquals("Weapons should not be null", exception.getMessage());
         }
         try {
             basic.compare(paper, null);
             fail("A NullPointerException should be thrown");
         } catch (NullPointerException exception) {
-            assertEquals(null, exception.getMessage());
+            assertEquals("Weapons should not be null", exception.getMessage());
         }
     }
 
@@ -179,13 +179,13 @@ public class BasicTest {
             basic.compare(null, scissors);
             fail("A NullPointerException should be thrown");
         } catch (NullPointerException exception) {
-            assertEquals(null, exception.getMessage());
+            assertEquals("Weapons should not be null", exception.getMessage());
         }
         try {
             basic.compare(scissors, null);
             fail("A NullPointerException should be thrown");
         } catch (NullPointerException exception) {
-            assertEquals(null, exception.getMessage());
+            assertEquals("Weapons should not be null", exception.getMessage());
         }
     }
 }
