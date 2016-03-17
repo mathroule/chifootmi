@@ -1,14 +1,14 @@
 package com.mathroule.chifootmi.game;
 
 import com.mathroule.chifootmi.Builder;
+import com.mathroule.chifootmi.game.player.Player;
 import com.mathroule.chifootmi.game.round.Draw;
 import com.mathroule.chifootmi.game.round.Round;
 import com.mathroule.chifootmi.game.round.Won;
 import com.mathroule.chifootmi.game.rule.Basic;
 import com.mathroule.chifootmi.game.rule.Rule;
 import com.mathroule.chifootmi.game.rule.Rules;
-import com.mathroule.chifootmi.player.Player;
-import com.mathroule.chifootmi.weapon.Weapon;
+import com.mathroule.chifootmi.game.weapon.Weapon;
 
 /**
  * Implement a match between two players.
@@ -203,7 +203,6 @@ public class Match {
         private boolean hasIA = false;
 
         public MatchBuilder(Player player1, Player player2) {
-            System.out.println("MatchBuilder player1: " + player1 + " player2: " + player2);
             this.player1 = player1;
             this.player2 = player2;
         }

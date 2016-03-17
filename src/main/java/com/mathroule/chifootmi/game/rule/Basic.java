@@ -1,13 +1,9 @@
 package com.mathroule.chifootmi.game.rule;
 
 
-import com.mathroule.chifootmi.weapon.Paper;
-import com.mathroule.chifootmi.weapon.Rock;
-import com.mathroule.chifootmi.weapon.Scissors;
-import com.mathroule.chifootmi.weapon.Weapon;
-
-import java.util.HashMap;
-import java.util.Map;
+import com.mathroule.chifootmi.game.weapon.Paper;
+import com.mathroule.chifootmi.game.weapon.Rock;
+import com.mathroule.chifootmi.game.weapon.Scissors;
 
 /**
  * Implement the basic games rules (i.e. Rock-paper-scissors).

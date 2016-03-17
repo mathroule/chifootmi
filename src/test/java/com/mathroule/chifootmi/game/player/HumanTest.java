@@ -1,5 +1,6 @@
-package com.mathroule.chifootmi.player;
+package com.mathroule.chifootmi.game.player;
 
+import com.mathroule.chifootmi.game.player.Human;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

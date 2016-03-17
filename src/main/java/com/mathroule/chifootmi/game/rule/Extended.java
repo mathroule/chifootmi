@@ -1,7 +1,7 @@
 package com.mathroule.chifootmi.game.rule;
 
 
-import com.mathroule.chifootmi.weapon.*;
+import com.mathroule.chifootmi.game.weapon.*;
 
 /**
  * Implement the extended games rules (i.e. Rock-paper-scissors-lizard-Spock).

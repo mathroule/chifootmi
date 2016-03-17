@@ -1,5 +1,6 @@
-package com.mathroule.chifootmi.weapon;
+package com.mathroule.chifootmi.game.weapon;
 
+import com.mathroule.chifootmi.game.weapon.*;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

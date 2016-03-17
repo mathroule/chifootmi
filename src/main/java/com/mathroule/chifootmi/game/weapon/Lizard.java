@@ -1,4 +1,4 @@
-package com.mathroule.chifootmi.weapon;
+package com.mathroule.chifootmi.game.weapon;
 
 /**
  * Implementation class for a lizard weapon.

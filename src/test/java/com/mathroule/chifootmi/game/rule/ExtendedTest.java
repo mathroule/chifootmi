@@ -1,6 +1,6 @@
 package com.mathroule.chifootmi.game.rule;
 
-import com.mathroule.chifootmi.weapon.*;
+import com.mathroule.chifootmi.game.weapon.*;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

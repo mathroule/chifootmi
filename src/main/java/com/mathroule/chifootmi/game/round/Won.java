@@ -1,6 +1,6 @@
 package com.mathroule.chifootmi.game.round;
 
-import com.mathroule.chifootmi.player.Player;
+import com.mathroule.chifootmi.game.player.Player;
 
 /**
  * Implement a won round of a match between two players.

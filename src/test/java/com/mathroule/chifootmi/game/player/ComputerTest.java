@@ -1,5 +1,6 @@
-package com.mathroule.chifootmi.player;
+package com.mathroule.chifootmi.game.player;
 
+import com.mathroule.chifootmi.game.player.Computer;
 import org.junit.Test;
 
 import java.util.Arrays;
