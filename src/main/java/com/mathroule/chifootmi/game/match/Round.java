@@ -62,12 +62,12 @@ public class Round extends RuledVersus {
         }
 
         // Check weapon 1 is not null
-        if (player1 == null) {
+        if (weapon1 == null) {
             throw new NullPointerException("Weapon 1 should not be null");
         }
 
         // Check weapon 2 is not null
-        if (player2 == null) {
+        if (weapon2 == null) {
             throw new NullPointerException("Weapon 2 should not be null");
         }
 
