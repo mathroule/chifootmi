@@ -2,6 +2,9 @@ package com.mathroule.chifootmi.game;
 
 import com.mathroule.chifootmi.player.Computer;
 import com.mathroule.chifootmi.player.Human;
+import com.mathroule.chifootmi.weapon.Paper;
+import com.mathroule.chifootmi.weapon.Rock;
+import com.mathroule.chifootmi.weapon.Scissors;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -72,6 +75,16 @@ public class MatchTest {
     }
 
     @Test
+    public void testMatchWithNullRules() throws Exception {
+        try {
+            new Match.MatchBuilder(human, computer1).rules(null).build();
+            fail("An IllegalArgumentException should be thrown");
+        } catch (IllegalArgumentException exception) {
+            assertEquals("Rules should not be null", exception.getMessage());
+        }
+    }
+
+    @Test
     public void testMatchWithSamePlayers() throws Exception {
         try {
             new Match.MatchBuilder(human, human).build();
@@ -101,5 +114,27 @@ public class MatchTest {
         } catch (IllegalArgumentException exception) {
             assertEquals("IA mode is only available in Human vs Computer match", exception.getMessage());
         }
+    }
+
+    @Test
+    public void testPlayRound() throws Exception {
+        Match match = new Match.MatchBuilder(human, computer1).build();
+
+        // Test rock vs paper
+        assertEquals(computer1, match.playRound(new Rock(), new Paper()));
+        assertEquals(human, match.playRound(new Paper(), new Rock()));
+
+        // Test rock vs scissors
+        assertEquals(human, match.playRound(new Rock(), new Scissors()));
+        assertEquals(computer1, match.playRound(new Scissors(), new Rock()));
+
+        // Test scissors vs paper
+        assertEquals(human, match.playRound(new Scissors(), new Paper()));
+        assertEquals(computer1, match.playRound(new Paper(), new Scissors()));
+
+        // Test draws
+        assertEquals(null, match.playRound(new Rock(), new Rock()));
+        assertEquals(null, match.playRound(new Paper(), new Paper()));
+        assertEquals(null, match.playRound(new Scissors(), new Scissors()));
     }
 }

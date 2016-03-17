@@ -1,7 +1,10 @@
 package com.mathroule.chifootmi.game;
 
 import com.mathroule.chifootmi.Builder;
+import com.mathroule.chifootmi.game.rule.Basic;
+import com.mathroule.chifootmi.game.rule.Rules;
 import com.mathroule.chifootmi.player.Player;
+import com.mathroule.chifootmi.weapon.Weapon;
 
 /**
  * Implement a match with two players.
@@ -34,6 +37,11 @@ public class Match {
     private final boolean hasIA; // TODO move in computer
 
     /**
+     * Rules of the match.
+     */
+    private final Rules rules;
+
+    /**
      * Match constructor from a builder.
      *
      * @param builder the match builder
@@ -47,6 +55,11 @@ public class Match {
         // Check player 2 is not null
         if (builder.player2 == null) {
             throw new IllegalArgumentException("Player 2 should not be null");
+        }
+
+        // Check rules are not null
+        if (builder.rules == null) {
+            throw new IllegalArgumentException("Rules should not be null");
         }
 
         // Check players are different
@@ -69,6 +82,7 @@ public class Match {
         this.mode = builder.mode;
         this.round = builder.round;
         this.hasIA = builder.hasIA;
+        this.rules = builder.rules;
     }
 
     /**
@@ -117,6 +131,19 @@ public class Match {
     }
 
     /**
+     * Play a round with players weapons.
+     *
+     * @param weapon1 the player 1 weapon
+     * @param weapon2 the player 2 weapon
+     * @return the winning player, null in case of a draw
+     */
+    public Player playRound(Weapon weapon1, Weapon weapon2) {
+        // TODO check if remains round
+        int result = rules.compare(weapon1, weapon2);
+        return result > 0 ? player1 : (result < 0 ? player2 : null);
+    }
+
+    /**
      * The available match mode.
      */
     public enum Mode {
@@ -131,6 +158,7 @@ public class Match {
 
         private final Player player1;
         private final Player player2;
+        private Rules rules = new Basic();
         private int round = 1;
         private Mode mode = Mode.COMPUTER_VS_COMPUTER;
         private boolean hasIA = false;
@@ -139,6 +167,11 @@ public class Match {
             System.out.println("MatchBuilder player1: " + player1 + " player2: " + player2);
             this.player1 = player1;
             this.player2 = player2;
+        }
+
+        public MatchBuilder rules(Rules rules) {
+            this.rules = rules;
+            return this;
         }
 
         public MatchBuilder mode(Mode mode) {
