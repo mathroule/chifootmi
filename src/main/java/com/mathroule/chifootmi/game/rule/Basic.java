@@ -14,10 +14,12 @@ import java.util.Map;
  */
 public class Basic extends Rules {
 
-    // TODO convert to singleton
 
     // TODO @see: https://en.wikipedia.org/wiki/Interface_segregation_principle
 
+    /**
+     * Constructor of the basic game rules (i.e. Rock-paper-scissors).
+     */
     public Basic() {
         // Scissors cuts paper
         this.add(new Rule(new Scissors(), "cuts", new Paper()));
