@@ -14,6 +14,11 @@ public class Result extends Versus {
     public Result(final Player player1, final Player player2, final List<Round> rounds) {
         super(player1, player2);
 
+        // Check rules is not null
+        if (rounds == null) {
+            throw new NullPointerException("Rounds should not be null");
+        }
+
         // Compute the count of draw rounds
         for (Round round : rounds) {
             if (round.getResult().equals(Round.Result.DRAW)) {
