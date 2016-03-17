@@ -1,5 +1,10 @@
 package com.mathroule.chifootmi.game.player;
 
+import com.mathroule.chifootmi.game.weapon.Weapon;
+
+import java.util.List;
+import java.util.Random;
+
 /**
  * Abstract class for a game player.
  */

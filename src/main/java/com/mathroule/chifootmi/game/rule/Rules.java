@@ -4,6 +4,7 @@ import com.mathroule.chifootmi.game.weapon.Weapon;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 
 /**
  * Abstract game rules. Main purpose is to compare if a weapon is better than another.
@@ -11,6 +12,13 @@ import java.util.Comparator;
 public abstract class Rules extends ArrayList<Rule> implements Comparator<Weapon> {
 
     // TODO use decorator
+
+    /**
+     * Get the available weapons of a game rules.
+     *
+     * @return the list of available weapons
+     */
+    public abstract List<Weapon> getAvailableWeapons();
 
     /**
      * Get the winning rule for the first weapon1 vs the second weapon.

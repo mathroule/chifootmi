@@ -9,6 +9,10 @@ import com.mathroule.chifootmi.game.rule.Basic;
 import com.mathroule.chifootmi.game.rule.Rule;
 import com.mathroule.chifootmi.game.rule.Rules;
 import com.mathroule.chifootmi.game.weapon.Weapon;
+import com.sun.org.apache.xpath.internal.operations.String;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Implement a match between two players.
@@ -51,6 +55,11 @@ public class Match {
     private int currentRound = 1;
 
     /**
+     * Rounds of the match.
+     */
+    private final List<Round> rounds;
+
+    /**
      * Match constructor from a builder.
      *
      * @param builder the match builder
@@ -90,6 +99,7 @@ public class Match {
         this.player2 = builder.player2;
         this.mode = builder.mode;
         this.round = builder.round;
+        this.rounds = new ArrayList<>(round);
         this.hasIA = builder.hasIA;
         this.rules = builder.rules;
     }
@@ -172,14 +182,30 @@ public class Match {
             rule = rules.getWiningRule(weapon2, weapon1);
         }
 
-        // Otherwise it's a draw
-        if (rule == null) {
-            // Return draw round result
-            return new Draw(currentRound++, player1, player2);
-        }
+        // If no result it's a draw
+        Round round = rule != null
+                ? new Won(currentRound++, player1, player2, winner, rule.toString())
+                : new Draw(currentRound++, player1, player2); // It's a round won by one of the players
 
-        // Return win round result
-        return new Won(currentRound++, player1, player2, winner, rule.toString());
+        // Save the round
+        rounds.add(round);
+
+        // Return the round
+        return round;
+    }
+
+    /**
+     * Get the match result value.
+     *
+     * @return the match result
+     */
+    public String getResult() {
+        // TODO allow to get result everywhere
+        if (hasRemainingRound()) {
+            throw new UnsupportedOperationException("Match is not finished");
+        }
+        // TODO add implementation
+        return null;
     }
 
     /**
