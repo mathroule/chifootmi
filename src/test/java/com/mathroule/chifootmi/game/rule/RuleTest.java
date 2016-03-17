@@ -1,16 +1,50 @@
 package com.mathroule.chifootmi.game.rule;
 
+import com.mathroule.chifootmi.weapon.Paper;
+import com.mathroule.chifootmi.weapon.Rock;
+import com.mathroule.chifootmi.weapon.Scissors;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 /**
- * Created by T442878 on 17/03/2016.
+ * Test a game rule.
  */
 public class RuleTest {
 
     @Test
-    public void testIsRespected() throws Exception {
+    public void testRuleWithValidValues() throws Exception {
+        try {
+            new Rule(new Scissors(), "cuts", new Paper());
+        } catch (IllegalArgumentException exception) {
+            fail("IllegalArgumentException should not be thrown");
+        }
+    }
 
+    @Test
+    public void testRuleWithSameWeapons() throws Exception {
+        try {
+            new Rule(new Paper(), "cuts", new Paper());
+            fail("An IllegalArgumentException should be thrown");
+        } catch (IllegalArgumentException exception) {
+            assertEquals("Weapons should be different", exception.getMessage());
+        }
+    }
+
+    @Test
+    public void testIsRespected() throws Exception {
+        Rule rule = new Rule(new Scissors(), "cuts", new Paper());
+        assertEquals("scissors cuts paper", rule.toString());
+        assertTrue(rule.isRespected(new Scissors(), new Paper()));
+
+        // Test violating rules are not respected
+        assertFalse(rule.isRespected(new Rock(), new Rock()));
+        assertFalse(rule.isRespected(new Rock(), new Paper()));
+        assertFalse(rule.isRespected(new Rock(), new Scissors()));
+        assertFalse(rule.isRespected(new Paper(), new Paper()));
+        assertFalse(rule.isRespected(new Paper(), new Paper()));
+        assertFalse(rule.isRespected(new Paper(), new Scissors()));
+        assertFalse(rule.isRespected(new Scissors(), new Rock()));
+        assertFalse(rule.isRespected(new Scissors(), new Scissors()));
     }
 }

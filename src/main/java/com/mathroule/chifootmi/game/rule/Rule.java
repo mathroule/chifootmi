@@ -8,7 +8,7 @@ import com.mathroule.chifootmi.weapon.Weapon;
 public class Rule {
 
     /**
-     * The winner of the rule.
+     * The winner weapon of the rule.
      */
     private final Weapon winner;
 
@@ -18,18 +18,23 @@ public class Rule {
     private final String action;
 
     /**
-     * The looser of the rule.
+     * The looser weapon of the rule.
      */
     private final Weapon looser;
 
     /**
      * Rule constructor.
      *
-     * @param winner the winner of the rule
+     * @param winner the winner weapon of the rule
      * @param action the action of the rule
-     * @param looser the looser of the rule
+     * @param looser the looser weapon of the rule
      */
     public Rule(Weapon winner, String action, Weapon looser) {
+        // Check weapons are different
+        if (winner.equals(looser)) {
+            throw new IllegalArgumentException("Weapons should be different");
+        }
+
         this.winner = winner;
         this.action = action;
         this.looser = looser;
