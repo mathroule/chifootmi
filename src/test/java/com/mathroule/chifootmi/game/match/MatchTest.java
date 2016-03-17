@@ -1,7 +1,5 @@
 package com.mathroule.chifootmi.game.match;
 
-import com.mathroule.chifootmi.game.match.Match;
-import com.mathroule.chifootmi.game.match.Round;
 import com.mathroule.chifootmi.game.player.Computer;
 import com.mathroule.chifootmi.game.player.Human;
 import com.mathroule.chifootmi.game.weapon.Paper;
@@ -31,8 +29,6 @@ public class MatchTest {
             assertEquals(computer1, match.getPlayer1());
             assertEquals(computer2, match.getPlayer2());
             assertEquals(1, match.getRound());
-            assertEquals(Match.Mode.COMPUTER_VS_COMPUTER, match.getMode());
-            assertEquals(false, match.hasIA());
         } catch (Exception exception) {
             fail("Exception should not be thrown");
         }
@@ -41,15 +37,13 @@ public class MatchTest {
     @Test
     public void testMatchWithValidValues() throws Exception {
         try {
-            Match match = new Match.MatchBuilder(human1, computer1)
+            Match match = new Match.MatchBuilder(human1, human2)
                     .round(5)
-                    .mode(Match.Mode.HUMAN_VS_COMPUTER)
-                    .hasIA(true).build();
+                    .build();
             assertEquals(human1, match.getPlayer1());
-            assertEquals(computer1, match.getPlayer2());
+            assertEquals(human2, match.getPlayer2());
             assertEquals(5, match.getRound());
-            assertEquals(Match.Mode.HUMAN_VS_COMPUTER, match.getMode());
-            assertEquals(true, match.hasIA());
+            assertEquals("Match Tom vs Bob in 5 rounds", match.toString());
         } catch (Exception exception) {
             fail("Exception should not be thrown");
         }
@@ -112,18 +106,6 @@ public class MatchTest {
             fail("An IllegalArgumentException should be thrown");
         } catch (IllegalArgumentException exception) {
             assertEquals("Number of round must be greater than zero", exception.getMessage());
-        }
-    }
-
-    @Test
-    public void testMatchWithInvalidAIMode() throws Exception {
-        try {
-            new Match.MatchBuilder(computer1, computer2)
-                    .mode(Match.Mode.COMPUTER_VS_COMPUTER)
-                    .hasIA(true).build();
-            fail("An IllegalArgumentException should be thrown");
-        } catch (IllegalArgumentException exception) {
-            assertEquals("IA mode is only available in Human vs Computer match", exception.getMessage());
         }
     }
 
