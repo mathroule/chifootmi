@@ -1,6 +1,6 @@
 package com.mathroule.chifootmi.game.match;
 
-import com.mathroule.chifootmi.Builder;
+import com.mathroule.chifootmi.IBuilder;
 import com.mathroule.chifootmi.game.player.Player;
 import com.mathroule.chifootmi.game.rule.Basic;
 import com.mathroule.chifootmi.game.rule.Rules;
@@ -107,7 +107,7 @@ public class Match extends RuledVersus {
     /**
      * The match builder.
      */
-    public static class MatchBuilder implements Builder<Match> {
+    public static class MatchBuilder implements IBuilder<Match> {
 
         private final Player player1;
         private final Player player2;

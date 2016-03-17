@@ -3,7 +3,7 @@ package com.mathroule.chifootmi;
 /**
  * Builder interface.
  */
-public interface Builder<T> {
+public interface IBuilder<T> {
 
     T build();
 }
