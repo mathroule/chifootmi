@@ -8,15 +8,17 @@ import java.util.List;
 /**
  * Implement the extended games rules (i.e. Rock-paper-scissors-lizard-Spock).
  */
-public class Extended extends Basic {
+public class Extended extends Rules {
 
-    // TODO avoid dependency with basic @see: https://en.wikipedia.org/wiki/Dependency_inversion_principle
+    private IRules base;
 
     /**
      * Constructor of the extended game rules (i.e. Rock-paper-scissors-lizard-Spock).
      */
     public Extended() {
         super();
+
+        base = new Basic();
 
         // Rock crushes lizard
         this.add(new Rule(new Rock(), "crushes", new Lizard()));
@@ -42,7 +44,7 @@ public class Extended extends Basic {
 
     @Override
     public List<Weapon> getAvailableWeapons() {
-        List<Weapon> weapons = super.getAvailableWeapons();
+        List<Weapon> weapons = base.getAvailableWeapons();
         weapons.add(new Lizard());
         weapons.add(new Spock());
         return weapons;
