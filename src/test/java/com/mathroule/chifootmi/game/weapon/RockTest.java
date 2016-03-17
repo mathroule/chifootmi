@@ -1,14 +1,8 @@
 package com.mathroule.chifootmi.game.weapon;
 
-import com.mathroule.chifootmi.game.weapon.Paper;
-import com.mathroule.chifootmi.game.weapon.Rock;
-import com.mathroule.chifootmi.game.weapon.Scissors;
-import com.mathroule.chifootmi.game.weapon.Weapon;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * Test the rock weapon.
@@ -19,6 +13,16 @@ public class RockTest {
     public void testGetName() throws Exception {
         Rock rock = new Rock();
         assertEquals("rock", rock.getName());
+    }
+
+    @Test
+    public void testHashCode() throws Exception {
+        Rock rock1 = new Rock();
+        Rock rock2 = new Rock();
+        Paper paper = new Paper();
+
+        assertNotEquals(rock1.hashCode(), paper.hashCode());
+        assertEquals(rock1.hashCode(), rock1.hashCode());
     }
 
     @Test
