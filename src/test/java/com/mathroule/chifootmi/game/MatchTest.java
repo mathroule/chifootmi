@@ -1,8 +1,5 @@
 package com.mathroule.chifootmi.game;
 
-import com.mathroule.chifootmi.game.round.Draw;
-import com.mathroule.chifootmi.game.round.Round;
-import com.mathroule.chifootmi.game.round.Win;
 import com.mathroule.chifootmi.game.player.Computer;
 import com.mathroule.chifootmi.game.player.Human;
 import com.mathroule.chifootmi.game.weapon.Paper;
@@ -17,13 +14,13 @@ import static org.junit.Assert.*;
  */
 public class MatchTest {
 
-    private Human human1 = new Human("Tom");
+    private final Human human1 = new Human("Tom");
 
-    private Human human2 = new Human("Bob");
+    private final Human human2 = new Human("Bob");
 
-    private Computer computer1 = new Computer();
+    private final Computer computer1 = new Computer();
 
-    private Computer computer2 = new Computer();
+    private final Computer computer2 = new Computer();
 
     @Test
     public void testMatchWithDefaultValues() throws Exception {
@@ -130,13 +127,17 @@ public class MatchTest {
 
     @Test
     public void testHasRemainingRound() throws Exception {
-        Match match = new Match.MatchBuilder(human1, computer1).round(2).build();
-        assertTrue(match.hasRemainingRound());
+        try {
+            Match match = new Match.MatchBuilder(human1, computer1).round(2).build();
+            assertTrue(match.hasRemainingRound());
 
-        // Play round 1 and 2
-        match.playRound(new Rock(), new Paper());
-        match.playRound(new Paper(), new Scissors());
-        assertFalse(match.hasRemainingRound());
+            // Play round 1 and 2
+            match.playRound(new Rock(), new Paper());
+            match.playRound(new Paper(), new Scissors());
+            assertFalse(match.hasRemainingRound());
+        } catch (UnsupportedOperationException exception) {
+            fail("UnsupportedOperationException should not be thrown");
+        }
     }
 
     @Test
@@ -166,89 +167,97 @@ public class MatchTest {
 
         // Round 1 : rock vs rock
         Round round1 = match.playRound(new Rock(), new Rock());
-        assertTrue(round1 instanceof Draw);
         assertEquals(1, round1.getRound());
         assertEquals(human1, round1.getPlayer1());
         assertEquals(human2, round1.getPlayer2());
-        assertEquals("draw", round1.getResult());
-        assertEquals("Round #1: Tom vs Bob has been a draw", round1.toString());
+        assertEquals("Round #1: Tom (rock) vs Bob (rock): draw", round1.toString());
 
         // Round 2 : rock vs paper
         Round round2 = match.playRound(new Rock(), new Paper());
-        assertTrue(round2 instanceof Win);
         assertEquals(2, round2.getRound());
         assertEquals(human1, round2.getPlayer1());
         assertEquals(human2, round2.getPlayer2());
-        assertEquals(human2, ((Win) round2).getWinner());
-        assertEquals("paper covers rock", round2.getResult());
-        assertEquals("Round #2: Tom vs Bob has been won by Bob with paper covers rock", round2.toString());
+        assertEquals(Round.Result.PLAYER_2_WIN, round2.getResult());
+        assertEquals("Round #2: Tom (rock) vs Bob (paper): paper covers rock", round2.toString());
 
         // Round 3 : rock vs scissors
         Round round3 = match.playRound(new Rock(), new Scissors());
-        assertTrue(round3 instanceof Win);
         assertEquals(3, round3.getRound());
         assertEquals(human1, round3.getPlayer1());
         assertEquals(human2, round3.getPlayer2());
-        assertEquals(human1, ((Win) round3).getWinner());
-        assertEquals("rock crushes scissors", round3.getResult());
-        assertEquals("Round #3: Tom vs Bob has been won by Tom with rock crushes scissors", round3.toString());
+        assertEquals(Round.Result.PLAYER_1_WIN, round3.getResult());
+        assertEquals("Round #3: Tom (rock) vs Bob (scissors): rock crushes scissors", round3.toString());
 
         // Round 4 : paper vs rock
         Round round4 = match.playRound(new Paper(), new Rock());
-        assertTrue(round4 instanceof Win);
         assertEquals(4, round4.getRound());
         assertEquals(human1, round4.getPlayer1());
         assertEquals(human2, round4.getPlayer2());
-        assertEquals(human1, ((Win) round4).getWinner());
-        assertEquals("paper covers rock", round4.getResult());
-        assertEquals("Round #4: Tom vs Bob has been won by Tom with paper covers rock", round4.toString());
+        assertEquals(Round.Result.PLAYER_1_WIN, round4.getResult());
+        assertEquals("Round #4: Tom (paper) vs Bob (rock): paper covers rock", round4.toString());
 
         // Round 5 : paper vs paper
         Round round5 = match.playRound(new Paper(), new Paper());
-        assertTrue(round5 instanceof Draw);
         assertEquals(5, round5.getRound());
         assertEquals(human1, round5.getPlayer1());
         assertEquals(human2, round5.getPlayer2());
-        assertEquals("draw", round5.getResult());
-        assertEquals("Round #5: Tom vs Bob has been a draw", round5.toString());
+        assertEquals(Round.Result.DRAW, round5.getResult());
+        assertEquals("Round #5: Tom (paper) vs Bob (paper): draw", round5.toString());
 
         // Round 6 : paper vs scissors
         Round round6 = match.playRound(new Paper(), new Scissors());
-        assertTrue(round6 instanceof Win);
         assertEquals(6, round6.getRound());
         assertEquals(human1, round6.getPlayer1());
         assertEquals(human2, round6.getPlayer2());
-        assertEquals(human2, ((Win) round6).getWinner());
-        assertEquals("scissors cuts paper", round6.getResult());
-        assertEquals("Round #6: Tom vs Bob has been won by Bob with scissors cuts paper", round6.toString());
+        assertEquals(Round.Result.PLAYER_2_WIN, round6.getResult());
+        assertEquals("Round #6: Tom (paper) vs Bob (scissors): scissors cuts paper", round6.toString());
 
         // Round 7 : scissors vs rock
         Round round7 = match.playRound(new Scissors(), new Rock());
-        assertTrue(round7 instanceof Win);
         assertEquals(7, round7.getRound());
         assertEquals(human1, round7.getPlayer1());
         assertEquals(human2, round7.getPlayer2());
-        assertEquals(human2, ((Win) round7).getWinner());
-        assertEquals("rock crushes scissors", round7.getResult());
-        assertEquals("Round #7: Tom vs Bob has been won by Bob with rock crushes scissors", round7.toString());
+        assertEquals(Round.Result.PLAYER_2_WIN, round7.getResult());
+        assertEquals("Round #7: Tom (scissors) vs Bob (rock): rock crushes scissors", round7.toString());
 
         // Round 8 : scissors vs paper
         Round round8 = match.playRound(new Scissors(), new Paper());
-        assertTrue(round8 instanceof Win);
         assertEquals(8, round8.getRound());
         assertEquals(human1, round8.getPlayer1());
         assertEquals(human2, round8.getPlayer2());
-        assertEquals(human1, ((Win) round8).getWinner());
-        assertEquals("scissors cuts paper", round8.getResult());
-        assertEquals("Round #8: Tom vs Bob has been won by Tom with scissors cuts paper", round8.toString());
+        assertEquals(Round.Result.PLAYER_1_WIN, round8.getResult());
+        assertEquals("Round #8: Tom (scissors) vs Bob (paper): scissors cuts paper", round8.toString());
 
         // Round 9 : scissors vs scissors
         Round round9 = match.playRound(new Scissors(), new Scissors());
-        assertTrue(round9 instanceof Draw);
         assertEquals(9, round9.getRound());
         assertEquals(human1, round9.getPlayer1());
         assertEquals(human2, round9.getPlayer2());
-        assertEquals("draw", round9.getResult());
-        assertEquals("Round #9: Tom vs Bob has been a draw", round9.toString());
+        assertEquals(Round.Result.DRAW, round9.getResult());
+        assertEquals("Round #9: Tom (scissors) vs Bob (scissors): draw", round9.toString());
+    }
+
+    @Test
+    public void testGetResult() throws Exception {
+        Match match = new Match.MatchBuilder(human1, computer1).round(2).build();
+
+        // Try to get match result
+        try {
+            match.getResult();
+            fail("UnsupportedOperationException should not be thrown");
+        } catch (UnsupportedOperationException exception) {
+            assertEquals("Match is not finished", exception.getMessage());
+        }
+
+        // Play round 1 and 2
+        match.playRound(new Rock(), new Paper());
+        match.playRound(new Paper(), new Scissors());
+
+        // Try to get match result
+        try {
+            match.getResult();
+        } catch (UnsupportedOperationException exception) {
+            fail("UnsupportedOperationException should not be thrown");
+        }
     }
 }

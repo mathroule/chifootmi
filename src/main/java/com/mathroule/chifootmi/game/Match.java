@@ -2,11 +2,7 @@ package com.mathroule.chifootmi.game;
 
 import com.mathroule.chifootmi.Builder;
 import com.mathroule.chifootmi.game.player.Player;
-import com.mathroule.chifootmi.game.round.Draw;
-import com.mathroule.chifootmi.game.round.Round;
-import com.mathroule.chifootmi.game.round.Win;
 import com.mathroule.chifootmi.game.rule.Basic;
-import com.mathroule.chifootmi.game.rule.Rule;
 import com.mathroule.chifootmi.game.rule.Rules;
 import com.mathroule.chifootmi.game.weapon.Weapon;
 
@@ -36,7 +32,7 @@ public class Match extends Versus {
     /**
      * Rules of the match.
      */
-    private final Rules rules;
+    private final Rules rules; // TODO factorize with round, use pattern
 
     /**
      * Current round of the match.
@@ -126,22 +122,8 @@ public class Match extends Versus {
             throw new UnsupportedOperationException("No more rounds to play");
         }
 
-        // Get round result and determinate winner and looser or draw
-        int result = rules.compare(weapon1, weapon2);
-        Player winner = result > 0 ? player1 : (result < 0 ? player2 : null);
-
-        // Try to get used rule from normal case: first weapon vs second weapon
-        Rule rule = rules.getWiningRule(weapon1, weapon2);
-
-        // Otherwise, try to get used rule from inverted case: second weapon vs first weapon
-        if (rule == null) {
-            rule = rules.getWiningRule(weapon2, weapon1);
-        }
-
-        // If no result it's a draw
-        Round round = rule != null
-                ? new Win(currentRound++, player1, player2, winner, rule.toString())
-                : new Draw(currentRound++, player1, player2); // It's a round won by one of the players
+        // Play the round
+        Round round = new Round(currentRound++, rules, player1, weapon1, player2, weapon2);
 
         // Save the round
         rounds.add(round);
@@ -156,14 +138,12 @@ public class Match extends Versus {
      * @return the match result
      */
     public Result getResult() {
-        // TODO allow to get result everywhere
         if (hasRemainingRound()) {
             throw new UnsupportedOperationException("Match is not finished");
         }
 
         return new Result(player1, player2, rounds);
     }
-
 
     /**
      * The available match mode.

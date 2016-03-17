@@ -3,7 +3,11 @@ package com.mathroule.chifootmi.game.rule;
 import com.mathroule.chifootmi.game.weapon.Paper;
 import com.mathroule.chifootmi.game.weapon.Rock;
 import com.mathroule.chifootmi.game.weapon.Scissors;
+import com.mathroule.chifootmi.game.weapon.Weapon;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -187,5 +191,15 @@ public class BasicTest {
         } catch (NullPointerException exception) {
             assertEquals("Weapons should not be null", exception.getMessage());
         }
+    }
+
+    @Test
+    public void testGetAvailableWeapons() throws Exception {
+        List<Weapon> weapons = new ArrayList<>();
+        weapons.add(new Rock());
+        weapons.add(new Paper());
+        weapons.add(new Scissors());
+
+        assertEquals(weapons, basic.getAvailableWeapons());
     }
 }
