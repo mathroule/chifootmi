@@ -48,7 +48,7 @@ public abstract class Versus {
      *
      * @return the player 1
      */
-    public Player getPlayer1() {
+    public final Player getPlayer1() {
         return player1;
     }
 
@@ -57,7 +57,7 @@ public abstract class Versus {
      *
      * @return the player 2
      */
-    public Player getPlayer2() {
+    public final Player getPlayer2() {
         return player2;
     }
 

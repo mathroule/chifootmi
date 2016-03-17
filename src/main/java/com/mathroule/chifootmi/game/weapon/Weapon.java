@@ -5,18 +5,18 @@ package com.mathroule.chifootmi.game.weapon;
  */
 public abstract class Weapon {
 
-    private String name;
+    private final String name;
 
     public Weapon(String name) {
         this.name = name;
     }
 
-    public String getName() {
+    public final String getName() {
         return name;
     }
 
     @Override
-    public int hashCode() {
+    public final int hashCode() {
         return getName().hashCode();
     }
 
@@ -30,7 +30,7 @@ public abstract class Weapon {
     public abstract boolean equals(Object obj);
 
     @Override
-    public String toString() {
+    public final String toString() {
         return name;
     }
 }

@@ -15,7 +15,7 @@ public abstract class Player {
         this.name = name;
     }
 
-    public String getName() {
+    public final String getName() {
         return name;
     }
 
@@ -24,25 +24,25 @@ public abstract class Player {
         return name;
     }
 
-    public int getLoose() {
+    public final int getLoose() {
         return loose;
     }
 
-    public int getWin() {
+    public final int getWin() {
         return win;
     }
 
     /**
      * Increment win counter.
      */
-    public void won() {
+    public final void won() {
         win++;
     }
 
     /**
      * Increment lose counter.
      */
-    public void loose() {
+    public final void loose() {
         loose++;
     }
 }
