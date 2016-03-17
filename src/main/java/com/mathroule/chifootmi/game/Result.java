@@ -34,6 +34,10 @@ public class Result extends Versus {
         return rounds;
     }
 
+    public int getDraw() {
+        return draw;
+    }
+
     @Override
     public String toString() {
         String strRounds = "";
