@@ -29,4 +29,9 @@ public abstract class Weapon {
      */
     @Override
     public abstract boolean equals(Object obj);
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
