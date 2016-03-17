@@ -2,7 +2,7 @@ package com.mathroule.chifootmi.game;
 
 import com.mathroule.chifootmi.game.round.Draw;
 import com.mathroule.chifootmi.game.round.Round;
-import com.mathroule.chifootmi.game.round.Won;
+import com.mathroule.chifootmi.game.round.Win;
 import com.mathroule.chifootmi.game.player.Computer;
 import com.mathroule.chifootmi.game.player.Human;
 import com.mathroule.chifootmi.game.weapon.Paper;
@@ -175,31 +175,31 @@ public class MatchTest {
 
         // Round 2 : rock vs paper
         Round round2 = match.playRound(new Rock(), new Paper());
-        assertTrue(round2 instanceof Won);
+        assertTrue(round2 instanceof Win);
         assertEquals(2, round2.getRound());
         assertEquals(human1, round2.getPlayer1());
         assertEquals(human2, round2.getPlayer2());
-        assertEquals(human2, ((Won) round2).getWinner());
+        assertEquals(human2, ((Win) round2).getWinner());
         assertEquals("paper covers rock", round2.getResult());
         assertEquals("Round #2: Tom vs Bob has been won by Bob with paper covers rock", round2.toString());
 
         // Round 3 : rock vs scissors
         Round round3 = match.playRound(new Rock(), new Scissors());
-        assertTrue(round3 instanceof Won);
+        assertTrue(round3 instanceof Win);
         assertEquals(3, round3.getRound());
         assertEquals(human1, round3.getPlayer1());
         assertEquals(human2, round3.getPlayer2());
-        assertEquals(human1, ((Won) round3).getWinner());
+        assertEquals(human1, ((Win) round3).getWinner());
         assertEquals("rock crushes scissors", round3.getResult());
         assertEquals("Round #3: Tom vs Bob has been won by Tom with rock crushes scissors", round3.toString());
 
         // Round 4 : paper vs rock
         Round round4 = match.playRound(new Paper(), new Rock());
-        assertTrue(round4 instanceof Won);
+        assertTrue(round4 instanceof Win);
         assertEquals(4, round4.getRound());
         assertEquals(human1, round4.getPlayer1());
         assertEquals(human2, round4.getPlayer2());
-        assertEquals(human1, ((Won) round4).getWinner());
+        assertEquals(human1, ((Win) round4).getWinner());
         assertEquals("paper covers rock", round4.getResult());
         assertEquals("Round #4: Tom vs Bob has been won by Tom with paper covers rock", round4.toString());
 
@@ -214,31 +214,31 @@ public class MatchTest {
 
         // Round 6 : paper vs scissors
         Round round6 = match.playRound(new Paper(), new Scissors());
-        assertTrue(round6 instanceof Won);
+        assertTrue(round6 instanceof Win);
         assertEquals(6, round6.getRound());
         assertEquals(human1, round6.getPlayer1());
         assertEquals(human2, round6.getPlayer2());
-        assertEquals(human2, ((Won) round6).getWinner());
+        assertEquals(human2, ((Win) round6).getWinner());
         assertEquals("scissors cuts paper", round6.getResult());
         assertEquals("Round #6: Tom vs Bob has been won by Bob with scissors cuts paper", round6.toString());
 
         // Round 7 : scissors vs rock
         Round round7 = match.playRound(new Scissors(), new Rock());
-        assertTrue(round7 instanceof Won);
+        assertTrue(round7 instanceof Win);
         assertEquals(7, round7.getRound());
         assertEquals(human1, round7.getPlayer1());
         assertEquals(human2, round7.getPlayer2());
-        assertEquals(human2, ((Won) round7).getWinner());
+        assertEquals(human2, ((Win) round7).getWinner());
         assertEquals("rock crushes scissors", round7.getResult());
         assertEquals("Round #7: Tom vs Bob has been won by Bob with rock crushes scissors", round7.toString());
 
         // Round 8 : scissors vs paper
         Round round8 = match.playRound(new Scissors(), new Paper());
-        assertTrue(round8 instanceof Won);
+        assertTrue(round8 instanceof Win);
         assertEquals(8, round8.getRound());
         assertEquals(human1, round8.getPlayer1());
         assertEquals(human2, round8.getPlayer2());
-        assertEquals(human1, ((Won) round8).getWinner());
+        assertEquals(human1, ((Win) round8).getWinner());
         assertEquals("scissors cuts paper", round8.getResult());
         assertEquals("Round #8: Tom vs Bob has been won by Tom with scissors cuts paper", round8.toString());
 
