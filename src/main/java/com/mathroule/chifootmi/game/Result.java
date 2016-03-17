@@ -1,8 +1,6 @@
 package com.mathroule.chifootmi.game;
 
 import com.mathroule.chifootmi.game.player.Player;
-import com.mathroule.chifootmi.game.round.Draw;
-import com.mathroule.chifootmi.game.round.Round;
 
 import java.util.List;
 
@@ -24,7 +22,7 @@ public class Result extends Versus {
 
         // Compute the count of draw rounds
         for (Round round : rounds) {
-            if (round instanceof Draw) {
+            if (round.getResult().equals(Round.Result.DRAW)) {
                 draw++;
             }
         }
@@ -40,13 +38,8 @@ public class Result extends Versus {
 
     @Override
     public String toString() {
-        String strRounds = "";
-        for (Round round : rounds) {
-            strRounds += round + "\n";
-        }
         return "Match " + super.toString()
-                + "\n" + strRounds
-                + "Draw " + draw + " times"
+                + "\nDraw " + draw + " times"
                 + "\n" + player1 + " wins " + player1.getWin() + " times"
                 + "\n" + player2 + " wins " + player2.getWin() + " times";
     }
