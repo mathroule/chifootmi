@@ -1,12 +1,12 @@
 package com.mathroule.chifootmi.game.round;
 
-import com.mathroule.chifootmi.player.Player;
+import com.mathroule.chifootmi.game.player.Player;
 
 /**
  * Abstract a round of a match between two players.
  */
 public abstract class Round {
-    // TODO refactor with match
+    // TODO refactor with match in playable
 
     /**
      * Number of the round.

@@ -1,8 +1,7 @@
 package com.mathroule.chifootmi.game.round;
 
-import com.mathroule.chifootmi.game.Match;
-import com.mathroule.chifootmi.player.Computer;
-import com.mathroule.chifootmi.player.Human;
+import com.mathroule.chifootmi.game.player.Computer;
+import com.mathroule.chifootmi.game.player.Human;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

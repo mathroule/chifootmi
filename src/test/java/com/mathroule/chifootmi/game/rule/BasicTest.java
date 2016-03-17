@@ -1,8 +1,8 @@
 package com.mathroule.chifootmi.game.rule;
 
-import com.mathroule.chifootmi.weapon.Paper;
-import com.mathroule.chifootmi.weapon.Rock;
-import com.mathroule.chifootmi.weapon.Scissors;
+import com.mathroule.chifootmi.game.weapon.Paper;
+import com.mathroule.chifootmi.game.weapon.Rock;
+import com.mathroule.chifootmi.game.weapon.Scissors;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

@@ -1,10 +1,9 @@
 package com.mathroule.chifootmi.game.rule;
 
-import com.mathroule.chifootmi.weapon.Weapon;
+import com.mathroule.chifootmi.game.weapon.Weapon;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.List;
 
 /**
  * Abstract game rules. Main purpose is to compare if a weapon is better than another.

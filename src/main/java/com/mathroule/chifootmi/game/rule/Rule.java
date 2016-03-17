@@ -1,6 +1,6 @@
 package com.mathroule.chifootmi.game.rule;
 
-import com.mathroule.chifootmi.weapon.Weapon;
+import com.mathroule.chifootmi.game.weapon.Weapon;
 
 /**
  * Implement a winning game rule. (i.e. Scissors cuts paper)

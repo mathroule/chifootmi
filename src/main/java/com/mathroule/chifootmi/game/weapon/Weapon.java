@@ -1,4 +1,4 @@
-package com.mathroule.chifootmi.weapon;
+package com.mathroule.chifootmi.game.weapon;
 
 /**
  * Abstract class for a game weapon.
@@ -17,6 +17,7 @@ public abstract class Weapon {
 
     @Override
     public int hashCode() {
+        // TODO improve hash code generation
         return getName().hashCode();
     }
 

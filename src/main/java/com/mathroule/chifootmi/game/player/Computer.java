@@ -1,4 +1,4 @@
-package com.mathroule.chifootmi.player;
+package com.mathroule.chifootmi.game.player;
 
 import java.util.Random;
 
