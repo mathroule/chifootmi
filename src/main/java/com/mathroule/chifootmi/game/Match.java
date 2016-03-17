@@ -4,12 +4,11 @@ import com.mathroule.chifootmi.Builder;
 import com.mathroule.chifootmi.game.player.Player;
 import com.mathroule.chifootmi.game.round.Draw;
 import com.mathroule.chifootmi.game.round.Round;
-import com.mathroule.chifootmi.game.round.Won;
+import com.mathroule.chifootmi.game.round.Win;
 import com.mathroule.chifootmi.game.rule.Basic;
 import com.mathroule.chifootmi.game.rule.Rule;
 import com.mathroule.chifootmi.game.rule.Rules;
 import com.mathroule.chifootmi.game.weapon.Weapon;
-import com.sun.org.apache.xpath.internal.operations.String;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,17 +16,7 @@ import java.util.List;
 /**
  * Implement a match between two players.
  */
-public class Match {
-
-    /**
-     * Player 1 of the match.
-     */
-    private final Player player1;
-
-    /**
-     * Player 2 of the match.
-     */
-    private final Player player2;
+public class Match extends Versus {
 
     /**
      * Number of round in match.
@@ -65,20 +54,7 @@ public class Match {
      * @param builder the match builder
      */
     private Match(MatchBuilder builder) {
-        // Check player 1 is not null
-        if (builder.player1 == null) {
-            throw new NullPointerException("Player 1 should not be null");
-        }
-
-        // Check player 2 is not null
-        if (builder.player2 == null) {
-            throw new NullPointerException("Player 2 should not be null");
-        }
-
-        // Check players are different
-        if (builder.player1.equals(builder.player2)) {
-            throw new IllegalArgumentException("Players should be different");
-        }
+        super(builder.player1, builder.player2);
 
         // Check rules are not null
         if (builder.rules == null) {
@@ -95,31 +71,11 @@ public class Match {
             throw new IllegalArgumentException("IA mode is only available in Human vs Computer match");
         }
 
-        this.player1 = builder.player1;
-        this.player2 = builder.player2;
         this.mode = builder.mode;
         this.round = builder.round;
         this.rounds = new ArrayList<>(round);
         this.hasIA = builder.hasIA;
         this.rules = builder.rules;
-    }
-
-    /**
-     * Get the player 1 value.
-     *
-     * @return the player 1
-     */
-    public Player getPlayer1() {
-        return player1;
-    }
-
-    /**
-     * Get the player 2 value.
-     *
-     * @return the player 2
-     */
-    public Player getPlayer2() {
-        return player2;
     }
 
     /**
@@ -184,7 +140,7 @@ public class Match {
 
         // If no result it's a draw
         Round round = rule != null
-                ? new Won(currentRound++, player1, player2, winner, rule.toString())
+                ? new Win(currentRound++, player1, player2, winner, rule.toString())
                 : new Draw(currentRound++, player1, player2); // It's a round won by one of the players
 
         // Save the round
@@ -199,14 +155,15 @@ public class Match {
      *
      * @return the match result
      */
-    public String getResult() {
+    public Result getResult() {
         // TODO allow to get result everywhere
         if (hasRemainingRound()) {
             throw new UnsupportedOperationException("Match is not finished");
         }
-        // TODO add implementation
-        return null;
+
+        return new Result(player1, player2, rounds);
     }
+
 
     /**
      * The available match mode.
@@ -257,5 +214,10 @@ public class Match {
         public Match build() {
             return new Match(this);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Match " + super.toString() + " in " + round + " rounds";
     }
 }
