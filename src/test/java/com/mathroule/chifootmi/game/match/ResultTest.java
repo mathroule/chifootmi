@@ -47,7 +47,8 @@ public class ResultTest {
     @Test
     public void testResultWithNullPlayer1() throws Exception {
         try {
-            new Result(null, computer, new ArrayList<>());
+            List<Round> rounds = new ArrayList<>();
+            new Result(null, computer, rounds);
             fail("A NullPointerException should be thrown");
         } catch (NullPointerException exception) {
             assertEquals("Player 1 should not be null", exception.getMessage());
@@ -57,7 +58,8 @@ public class ResultTest {
     @Test
     public void testResultWithNullPlayer2() throws Exception {
         try {
-            new Result(human1, null, new ArrayList<>());
+            List<Round> rounds = new ArrayList<>();
+            new Result(human1, null, rounds);
             fail("A NullPointerException should be thrown");
         } catch (NullPointerException exception) {
             assertEquals("Player 2 should not be null", exception.getMessage());
@@ -67,7 +69,8 @@ public class ResultTest {
     @Test
     public void testResultWithNullPlayers() throws Exception {
         try {
-            new Result(null, null, new ArrayList<>());
+            List<Round> rounds = new ArrayList<>();
+            new Result(null, null, rounds);
             fail("A NullPointerException should be thrown");
         } catch (NullPointerException exception) {
             assertEquals("Player 1 should not be null", exception.getMessage());
