@@ -15,7 +15,6 @@ public abstract class Weapon {
         return name;
     }
 
-
     @Override
     public int hashCode() {
         return getName().hashCode();
