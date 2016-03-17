@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * Implement game statistics.
  */
-public class Statistics extends ArrayList<Result> {
+public final class Statistics extends ArrayList<Result> {
 
     private Statistics() {
     }

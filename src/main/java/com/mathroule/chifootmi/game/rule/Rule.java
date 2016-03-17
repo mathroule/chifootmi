@@ -5,7 +5,7 @@ import com.mathroule.chifootmi.game.weapon.Weapon;
 /**
  * Implement a winning game rule. (i.e. Scissors cuts paper)
  */
-public class Rule {
+public final class Rule {
 
     /**
      * The winner weapon of the rule.

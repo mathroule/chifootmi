@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Implement a match between two players.
  */
-public class Match extends RuledVersus {
+public final class Match extends RuledVersus {
 
     /**
      * Number of round in match.

@@ -3,7 +3,7 @@ package com.mathroule.chifootmi.game.player;
 /**
  * Implementation class for an human player.
  */
-public class Human extends Player {
+public final class Human extends Player {
 
     /**
      * Human player constructor using name.

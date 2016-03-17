@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Implement the basic games rules (i.e. Rock-paper-scissors).
  */
-public class Basic extends Rules {
+public final class Basic extends Rules {
 
     /**
      * Constructor of the basic game rules (i.e. Rock-paper-scissors).
@@ -29,7 +29,7 @@ public class Basic extends Rules {
     }
 
     @Override
-    public List<Weapon> getAvailableWeapons() {
+    public final List<Weapon> getAvailableWeapons() {
         List<Weapon> weapons = new ArrayList<>();
         weapons.add(new Rock());
         weapons.add(new Paper());

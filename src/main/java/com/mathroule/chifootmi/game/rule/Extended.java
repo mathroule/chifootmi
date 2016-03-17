@@ -8,9 +8,9 @@ import java.util.List;
 /**
  * Implement the extended games rules (i.e. Rock-paper-scissors-lizard-Spock).
  */
-public class Extended extends Rules {
+public final class Extended extends Rules {
 
-    private IRules base;
+    private final IRules base;
 
     /**
      * Constructor of the extended game rules (i.e. Rock-paper-scissors-lizard-Spock).
@@ -43,7 +43,7 @@ public class Extended extends Rules {
     }
 
     @Override
-    public List<Weapon> getAvailableWeapons() {
+    public final List<Weapon> getAvailableWeapons() {
         List<Weapon> weapons = base.getAvailableWeapons();
         weapons.add(new Lizard());
         weapons.add(new Spock());

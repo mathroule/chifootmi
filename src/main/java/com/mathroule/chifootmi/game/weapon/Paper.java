@@ -3,7 +3,7 @@ package com.mathroule.chifootmi.game.weapon;
 /**
  * Implementation class for a paper weapon.
  */
-public class Paper extends Weapon {
+public final class Paper extends Weapon {
 
     public Paper() {
         super("paper");
