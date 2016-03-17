@@ -23,25 +23,33 @@ public class MatchTest {
 
     @Test
     public void testMatchWithDefaultValues() throws Exception {
-        Match match = new Match.MatchBuilder(computer1, computer2).build();
-        assertEquals(computer1, match.getPlayer1());
-        assertEquals(computer2, match.getPlayer2());
-        assertEquals(1, match.getRound());
-        assertEquals(Match.Mode.COMPUTER_VS_COMPUTER, match.getMode());
-        assertEquals(false, match.hasIA());
+        try {
+            Match match = new Match.MatchBuilder(computer1, computer2).build();
+            assertEquals(computer1, match.getPlayer1());
+            assertEquals(computer2, match.getPlayer2());
+            assertEquals(1, match.getRound());
+            assertEquals(Match.Mode.COMPUTER_VS_COMPUTER, match.getMode());
+            assertEquals(false, match.hasIA());
+        } catch (IllegalArgumentException exception) {
+            fail("IllegalArgumentException should not be thrown");
+        }
     }
 
     @Test
     public void testMatchWithValidValues() throws Exception {
-        Match match = new Match.MatchBuilder(human, computer1)
-                .round(5)
-                .mode(Match.Mode.HUMAN_VS_COMPUTER)
-                .hasIA(true).build();
-        assertEquals(human, match.getPlayer1());
-        assertEquals(computer1, match.getPlayer2());
-        assertEquals(5, match.getRound());
-        assertEquals(Match.Mode.HUMAN_VS_COMPUTER, match.getMode());
-        assertEquals(true, match.hasIA());
+        try {
+            Match match = new Match.MatchBuilder(human, computer1)
+                    .round(5)
+                    .mode(Match.Mode.HUMAN_VS_COMPUTER)
+                    .hasIA(true).build();
+            assertEquals(human, match.getPlayer1());
+            assertEquals(computer1, match.getPlayer2());
+            assertEquals(5, match.getRound());
+            assertEquals(Match.Mode.HUMAN_VS_COMPUTER, match.getMode());
+            assertEquals(true, match.hasIA());
+        } catch (IllegalArgumentException exception) {
+            fail("IllegalArgumentException should not be thrown");
+        }
     }
 
     @Test
