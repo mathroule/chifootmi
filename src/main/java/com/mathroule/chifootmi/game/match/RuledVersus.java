@@ -18,6 +18,7 @@ public abstract class RuledVersus extends Versus {
      *
      * @param player1 the first player of the round
      * @param player2 the second player of the round
+     * @param rules   the rules of the round
      */
     public RuledVersus(final Player player1, final Player player2, final Rules rules) {
         super(player1, player2);

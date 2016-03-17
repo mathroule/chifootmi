@@ -48,6 +48,7 @@ public class Round extends RuledVersus {
      * Round constructor.
      *
      * @param round   the number of the round
+     * @param rules   the rules of the round
      * @param player1 the first player of the round
      * @param weapon1 the first player weapon for the round
      * @param player2 the second player of the round
