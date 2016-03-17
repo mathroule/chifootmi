@@ -22,6 +22,9 @@ public class Statistics extends ArrayList<Result> {
 
     @Override
     public String toString() {
+        if (this.isEmpty()) {
+            return "No statistics to show";
+        }
         String statistics = "";
         for (Result result : this) {
             statistics += "\n" + result;
