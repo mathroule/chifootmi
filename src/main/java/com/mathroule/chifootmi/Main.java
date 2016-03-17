@@ -18,6 +18,9 @@ import java.util.Scanner;
  */
 public class Main {
 
+    // TODO improve CLI
+    private static final String SHELL_INPUT = "\n> ";
+
     private static final int HUMAN_VS_COMPUTER = 1;
     private static final int COMPUTER_VS_COMPUTER = 2;
     private static final int DISPLAY_STATISTICS = 3;
@@ -28,8 +31,8 @@ public class Main {
         boolean playAgain = false;
 
         do {
-            // Get game mode
-            System.out.println("Choose mode:\n1) Human vs Computer\n2) Computer vs Computer\n3) Show statistics");
+            // Get game mode (play Human vs Computer by default) // FIXME
+            System.out.print("Choose mode:\n1) Human vs Computer\n2) Computer vs Computer\n3) Show statistic" + SHELL_INPUT);
             Scanner scanner = new Scanner(System.in);
             int mode = HUMAN_VS_COMPUTER;
             if (scanner.hasNextInt()) {
@@ -40,16 +43,16 @@ public class Main {
             if (mode == DISPLAY_STATISTICS) {
                 System.out.println(Statistics.getInstance());
             } else {
-                // Get game rules
-                System.out.println("Choose rules:\n1) Rock-paper-scissors\n2) Rock-paper-scissors-lizard-Spock");
+                // Get game rules (use basic rules by default)
+                System.out.print("Choose rules:\n1) Rock-paper-scissors\n2) Rock-paper-scissors-lizard-Spock" + SHELL_INPUT);
                 int rule = 1;
                 if (scanner.hasNextInt()) {
                     rule = scanner.nextInt();
                 }
-                Rules rules = rule == 1 ? new Basic() : new Extended();
+                Rules rules = rule == 2 ? new Extended() : new Basic();
 
-                // Get number of rounds
-                System.out.print("Input number of rounds: ");
+                // Get number of rounds (play 1 round by default)
+                System.out.print("Enter number of rounds" + SHELL_INPUT);
                 int round = 1;
                 if (scanner.hasNextInt()) {
                     round = scanner.nextInt();
@@ -58,20 +61,23 @@ public class Main {
                 // Play the match
                 Match match = null;
                 List<Weapon> weapons = rules.getAvailableWeapons();
-                if (mode == HUMAN_VS_COMPUTER) { // Play Human vs Computer
-                    // Get player name
-                    System.out.print("Input your name: ");
+
+                // Play Human vs Computer
+                if (mode == HUMAN_VS_COMPUTER) {
+                    // Get player name // TODO persist name
+                    System.out.print("Enter your name" + SHELL_INPUT);
                     String name = null;
                     if (scanner.hasNext()) {
                         name = scanner.next();
                     }
 
                     // Generate weapons choice
-                    String strWeapons = "";
+                    String chooseWeapons = "Choose a weapon:";
                     int i = 1;
                     for (Weapon weapon : weapons) {
-                        strWeapons += "\n" + (i++) + ") " + weapon;
+                        chooseWeapons += "\n" + (i++) + ") " + weapon;
                     }
+                    chooseWeapons += SHELL_INPUT;
 
                     // Create the match
                     Computer computer = new Computer();
@@ -86,7 +92,7 @@ public class Main {
                         // Get player weapon
                         int move = 1;
                         do {
-                            System.out.println("Choose a move:" + strWeapons);
+                            System.out.print(chooseWeapons);
                             if (scanner.hasNextInt()) {
                                 move = scanner.nextInt();
                             }
@@ -130,10 +136,10 @@ public class Main {
                 }
             }
 
-            // Ask play again
-            System.out.print("\nPlay again (y/n)? ");
+            // Ask play again (default is true)
+            System.out.print("\nPlay again (y/n)?" + SHELL_INPUT);
             if (scanner.hasNext()) {
-                playAgain = scanner.next().toLowerCase().equals("y");
+                playAgain = !scanner.next().toLowerCase().equals("n");
             }
         } while (playAgain);
     }
