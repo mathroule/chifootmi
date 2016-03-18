@@ -7,7 +7,7 @@ public abstract class Weapon {
 
     private final String name;
 
-    public Weapon(String name) {
+    Weapon(String name) {
         this.name = name;
     }
 

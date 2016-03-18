@@ -5,17 +5,17 @@ import com.mathroule.chifootmi.game.player.Player;
 /**
  * Abstract a versus between two players.
  */
-public abstract class Versus {
+abstract class Versus {
 
     /**
      * Player 1 of the versus.
      */
-    protected final Player player1;
+    final Player player1;
 
     /**
      * Player 2 of the versus.
      */
-    protected final Player player2;
+    final Player player2;
 
     /**
      * Versus constructor.
@@ -23,7 +23,7 @@ public abstract class Versus {
      * @param player1 the first player of the round
      * @param player2 the second player of the round
      */
-    public Versus(final Player player1, final Player player2) {
+    Versus(final Player player1, final Player player2) {
         // Check player 1 is not null
         if (player1 == null) {
             throw new NullPointerException("Player 1 should not be null");
