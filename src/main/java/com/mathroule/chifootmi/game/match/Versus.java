@@ -61,7 +61,6 @@ public abstract class Versus {
         return player2;
     }
 
-
     @Override
     public String toString() {
         return player1 + " vs " + player2;

@@ -25,7 +25,7 @@ public class MatchTest {
     @Test
     public void testMatchWithDefaultValues() throws Exception {
         try {
-            Match match = new Match.MatchBuilder(computer1, computer2).build();
+            Match match = new Match.Builder(computer1, computer2).build();
             assertEquals(computer1, match.getPlayer1());
             assertEquals(computer2, match.getPlayer2());
             assertEquals(1, match.getRound());
@@ -37,7 +37,7 @@ public class MatchTest {
     @Test
     public void testMatchWithValidValues() throws Exception {
         try {
-            Match match = new Match.MatchBuilder(human1, human2)
+            Match match = new Match.Builder(human1, human2)
                     .round(5)
                     .build();
             assertEquals(human1, match.getPlayer1());
@@ -52,7 +52,7 @@ public class MatchTest {
     @Test
     public void testMatchWithNullPlayer1() throws Exception {
         try {
-            new Match.MatchBuilder(null, computer2).build();
+            new Match.Builder(null, computer2).build();
             fail("A NullPointerException should be thrown");
         } catch (NullPointerException exception) {
             assertEquals("Player 1 should not be null", exception.getMessage());
@@ -62,7 +62,7 @@ public class MatchTest {
     @Test
     public void testMatchWithNullPlayer2() throws Exception {
         try {
-            new Match.MatchBuilder(computer1, null).build();
+            new Match.Builder(computer1, null).build();
             fail("A NullPointerException should be thrown");
         } catch (NullPointerException exception) {
             assertEquals("Player 2 should not be null", exception.getMessage());
@@ -72,7 +72,7 @@ public class MatchTest {
     @Test
     public void testMatchWithNullPlayers() throws Exception {
         try {
-            new Match.MatchBuilder(null, null).build();
+            new Match.Builder(null, null).build();
             fail("A NullPointerException should be thrown");
         } catch (NullPointerException exception) {
             assertEquals("Player 1 should not be null", exception.getMessage());
@@ -82,7 +82,7 @@ public class MatchTest {
     @Test
     public void testMatchWithSamePlayers() throws Exception {
         try {
-            new Match.MatchBuilder(human1, human1).build();
+            new Match.Builder(human1, human1).build();
             fail("An IllegalArgumentException should be thrown");
         } catch (IllegalArgumentException exception) {
             assertEquals("Players should be different", exception.getMessage());
@@ -92,7 +92,7 @@ public class MatchTest {
     @Test
     public void testMatchWithNullRules() throws Exception {
         try {
-            new Match.MatchBuilder(human1, computer1).rules(null).build();
+            new Match.Builder(human1, computer1).rules(null).build();
             fail("A NullPointerException should be thrown");
         } catch (NullPointerException exception) {
             assertEquals("Rules should not be null", exception.getMessage());
@@ -102,7 +102,7 @@ public class MatchTest {
     @Test
     public void testMatchWithInvalidRound() throws Exception {
         try {
-            new Match.MatchBuilder(human1, computer1).round(-5).build();
+            new Match.Builder(human1, computer1).round(-5).build();
             fail("An IllegalArgumentException should be thrown");
         } catch (IllegalArgumentException exception) {
             assertEquals("Number of round must be greater than zero", exception.getMessage());
@@ -112,7 +112,7 @@ public class MatchTest {
     @Test
     public void testHasRemainingRound() throws Exception {
         try {
-            Match match = new Match.MatchBuilder(human1, computer1).round(2).build();
+            Match match = new Match.Builder(human1, computer1).round(2).build();
             assertTrue(match.hasRemainingRound());
 
             // Play round 1 and 2
@@ -126,7 +126,7 @@ public class MatchTest {
 
     @Test
     public void testPlayTooMuchRound() throws Exception {
-        Match match = new Match.MatchBuilder(human1, computer1).round(2).build();
+        Match match = new Match.Builder(human1, computer1).round(2).build();
 
         // Play round 1 and 2
         try {
@@ -147,7 +147,7 @@ public class MatchTest {
 
     @Test
     public void testPlayRound() throws Exception {
-        Match match = new Match.MatchBuilder(human1, human2).round(9).build();
+        Match match = new Match.Builder(human1, human2).round(9).build();
 
         // Round 1 : rock vs rock
         Round round1 = match.playRound(new Rock(), new Rock());
@@ -223,7 +223,7 @@ public class MatchTest {
 
     @Test
     public void testGetResult() throws Exception {
-        Match match = new Match.MatchBuilder(human1, computer1).round(2).build();
+        Match match = new Match.Builder(human1, computer1).round(2).build();
 
         // Try to get match result
         try {

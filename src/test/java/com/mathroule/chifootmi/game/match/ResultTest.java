@@ -2,9 +2,7 @@ package com.mathroule.chifootmi.game.match;
 
 import com.mathroule.chifootmi.game.player.Computer;
 import com.mathroule.chifootmi.game.player.Human;
-import com.mathroule.chifootmi.game.rule.Basic;
 import com.mathroule.chifootmi.game.weapon.Paper;
-import com.mathroule.chifootmi.game.weapon.Rock;
 import com.mathroule.chifootmi.game.weapon.Scissors;
 import org.junit.Test;
 
@@ -25,14 +23,12 @@ public class ResultTest {
 
     private Computer computer = new Computer();
 
-    private Basic basic = new Basic();
-
     @Test
     public void testResult() throws Exception {
         try {
             List<Round> rounds = new ArrayList<>();
-            rounds.add(new Round(1, basic, human1, new Paper(), human2, new Paper()));
-            rounds.add(new Round(2, basic, human1, new Scissors(), human2, new Paper()));
+            rounds.add(new Round.Builder(human1, new Paper(), human2, new Paper()).build());
+            rounds.add(new Round.Builder(human1, new Scissors(), human2, new Paper()).round(2).build());
             Result result = new Result(human1, human2, rounds);
             assertEquals(1, result.getDraw());
             assertEquals("--- Match Tom vs Toto ---\n" +
@@ -90,9 +86,9 @@ public class ResultTest {
     @Test
     public void testGetDraw() throws Exception {
         List<Round> rounds = new ArrayList<>();
-        rounds.add(new Round(1, basic, human1, new Paper(), computer, new Paper()));
-        rounds.add(new Round(2, basic, human1, new Paper(), computer, new Paper()));
-        rounds.add(new Round(2, basic, human1, new Rock(), computer, new Paper()));
+        rounds.add(new Round.Builder(human1, new Paper(), human2, new Paper()).build());
+        rounds.add(new Round.Builder(human1, new Paper(), human2, new Paper()).build());
+        rounds.add(new Round.Builder(human1, new Scissors(), human2, new Paper()).build());
         Result result = new Result(human1, computer, rounds);
         assertEquals(2, result.getDraw());
     }
