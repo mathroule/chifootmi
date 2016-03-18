@@ -19,10 +19,13 @@ public class RockTest {
     public void testHashCode() throws Exception {
         Rock rock1 = new Rock();
         Rock rock2 = new Rock();
+        Rock rock3 = new Rock();
         Paper paper = new Paper();
 
         assertNotEquals(rock1.hashCode(), paper.hashCode());
-        assertEquals(rock1.hashCode(), rock1.hashCode());
+        assertEquals(rock1.hashCode(), rock2.hashCode());
+        assertEquals(rock2.hashCode(), rock3.hashCode());
+        assertEquals(rock1.hashCode(), rock3.hashCode());
     }
 
     @Test
