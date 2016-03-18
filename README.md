@@ -7,6 +7,8 @@ Based on this [Rock, Paper, Scissors](Problem.md) problem.
 To play the game, run:
 
 ```
+git clone https://github.com/mathroule/chifootmi.git
+cd chifootmi
 gradlew build
 java -cp build\classes\main com.mathroule.chifootmi.Main
 ```
