@@ -103,7 +103,7 @@ public final class Match extends RuledVersus {
             throw new UnsupportedOperationException("Match is not finished");
         }
 
-        return new Result(player1, player2, rounds);
+        return new Result.Builder(player1, player2).rounds(rounds).build();
     }
 
     @Override
