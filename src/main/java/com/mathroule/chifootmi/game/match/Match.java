@@ -34,7 +34,7 @@ public final class Match extends RuledVersus {
      *
      * @param builder the match builder
      */
-    private Match(MatchBuilder builder) {
+    private Match(Builder builder) {
         super(builder.player1, builder.player2, builder.rules);
 
         // Check rules are not null
@@ -82,7 +82,9 @@ public final class Match extends RuledVersus {
         }
 
         // Play the round
-        Round round = new Round(currentRound++, rules, player1, weapon1, player2, weapon2);
+        Round round = new Round.Builder(player1, weapon1, player2, weapon2)
+                .round(currentRound++)
+                .rules(rules).build();
 
         // Save the round
         rounds.add(round);
@@ -104,39 +106,60 @@ public final class Match extends RuledVersus {
         return new Result(player1, player2, rounds);
     }
 
+    @Override
+    public String toString() {
+        return "Match " + super.toString() + " in " + round + " rounds";
+    }
+
     /**
      * The match builder.
      */
-    public static class MatchBuilder implements IBuilder<Match> {
+    public final static class Builder implements IBuilder<Match> {
 
-        private final Player player1;
-        private final Player player2;
-        private Rules rules = new Basic();
+        protected final Player player1;
+        protected final Player player2;
         private int round = 1;
+        protected Rules rules = new Basic();
 
-        public MatchBuilder(Player player1, Player player2) {
+        /**
+         * Build match with two players, 1 round and basic rules.
+         *
+         * @param player1 the first player of the match
+         * @param player2 the second player of the match
+         */
+        public Builder(Player player1, Player player2) {
             this.player1 = player1;
             this.player2 = player2;
         }
 
-        public MatchBuilder rules(Rules rules) {
-            this.rules = rules;
-            return this;
-        }
-
-        public MatchBuilder round(int round) {
+        /**
+         * Set the number of round of the match.
+         *
+         * @return This Builder object to allow chaining
+         */
+        public Builder round(int round) {
             this.round = round;
             return this;
         }
 
+        /**
+         * Set the match rules.
+         *
+         * @return This Builder object to allow chaining
+         */
+        public Builder rules(Rules rules) {
+            this.rules = rules;
+            return this;
+        }
+
+        /**
+         * Build a match.
+         *
+         * @return the built match
+         */
         @Override
         public Match build() {
             return new Match(this);
         }
-    }
-
-    @Override
-    public String toString() {
-        return "Match " + super.toString() + " in " + round + " rounds";
     }
 }

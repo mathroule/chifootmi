@@ -81,7 +81,7 @@ public class Main {
 
                     // Create the match
                     Computer computer = new Computer();
-                    match = new Match.MatchBuilder(new Human(name), computer)
+                    match = new Match.Builder(new Human(name), computer)
                             .round(round)
                             .rules(rules)
                             .build();
@@ -109,7 +109,7 @@ public class Main {
                     // Create the match
                     Computer computer1 = new Computer();
                     Computer computer2 = new Computer();
-                    match = new Match.MatchBuilder(computer1, computer2)
+                    match = new Match.Builder(computer1, computer2)
                             .round(round)
                             .rules(rules)
                             .build();
