@@ -136,6 +136,7 @@ public final class Match extends RuledVersus {
         /**
          * Set the number of round of the match.
          *
+         * @param round the number of round of the match
          * @return This Builder object to allow chaining
          */
         public Builder round(int round) {
@@ -143,9 +144,11 @@ public final class Match extends RuledVersus {
             return this;
         }
 
+
         /**
          * Set the match rules.
          *
+         * @param rules the match rules
          * @return This Builder object to allow chaining
          */
         public Builder rules(Rules rules) {

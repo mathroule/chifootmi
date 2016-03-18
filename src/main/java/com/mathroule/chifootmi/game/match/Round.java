@@ -150,6 +150,7 @@ public class Round extends RuledVersus {
         /**
          * Set the round rules.
          *
+         * @param rules the round rules
          * @return This Builder object to allow chaining
          */
         public Builder rules(Rules rules) {
@@ -160,6 +161,7 @@ public class Round extends RuledVersus {
         /**
          * Set the round number.
          *
+         * @param round the round number
          * @return This Builder object to allow chaining
          */
         public Builder round(int round) {

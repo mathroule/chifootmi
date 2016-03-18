@@ -67,8 +67,9 @@ public final class Result extends Versus {
         }
 
         /**
-         * Set the rounds.
+         * Set the rounds of the result.
          *
+         * @param rounds the rounds of the result
          * @return This Builder object to allow chaining
          */
         public Builder rounds(List<Round> rounds) {
