@@ -5,7 +5,7 @@ import com.mathroule.chifootmi.game.match.Result;
 import java.util.ArrayList;
 
 /**
- * Implement game statistics.
+ * Implement game statistics as singleton.
  */
 public final class Statistics extends ArrayList<Result> {
 

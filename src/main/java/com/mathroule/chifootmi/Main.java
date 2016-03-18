@@ -49,7 +49,7 @@ public class Main {
                 if (scanner.hasNextInt()) {
                     rule = scanner.nextInt();
                 }
-                Rules rules = rule == 2 ? new Extended() : new Basic();
+                Rules rules = rule == 2 ? Extended.getInstance() : Basic.getInstance();
 
                 // Get number of rounds (play 1 round by default)
                 System.out.print("Enter number of rounds" + SHELL_INPUT);
