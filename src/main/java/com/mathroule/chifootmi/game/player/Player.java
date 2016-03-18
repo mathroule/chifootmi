@@ -11,7 +11,7 @@ public abstract class Player {
 
     private int loose;
 
-    public Player(String name) {
+    Player(String name) {
         this.name = name;
     }
 
