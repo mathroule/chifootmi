@@ -2,12 +2,14 @@ package com.mathroule.chifootmi.game.match;
 
 import com.mathroule.chifootmi.game.player.Computer;
 import com.mathroule.chifootmi.game.player.Human;
+import com.mathroule.chifootmi.game.player.HumanCLI;
 import com.mathroule.chifootmi.game.weapon.Paper;
 import com.mathroule.chifootmi.game.weapon.Scissors;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
@@ -17,9 +19,9 @@ import static org.junit.Assert.fail;
  */
 public class ResultTest {
 
-    private final Human human1 = new Human("Tom");
+    private final Human human1 = new HumanCLI("Tom", new Scanner(System.in), "");
 
-    private final Human human2 = new Human("Toto");
+    private final Human human2 = new HumanCLI("Rob", new Scanner(System.in), "");
 
     private final Computer computer = new Computer();
 
@@ -31,10 +33,10 @@ public class ResultTest {
             rounds.add(new Round.Builder(human1, new Scissors(), human2, new Paper()).round(2).build());
             Result result = new Result.Builder(human1, human2).rounds(rounds).build();
             assertEquals(1, result.getDraw());
-            assertEquals("--- Match Tom vs Toto ---\n" +
+            assertEquals("--- Match Tom vs Rob ---\n" +
                     "Draw 1 times\n" +
                     "Tom wins 1 times\n" +
-                    "Toto wins 0 times", result.toString());
+                    "Rob wins 0 times", result.toString());
         } catch (Exception exception) {
             fail("Exception should not be thrown");
         }

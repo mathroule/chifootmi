@@ -1,5 +1,9 @@
 package com.mathroule.chifootmi.game.player;
 
+import com.mathroule.chifootmi.game.weapon.Weapon;
+
+import java.util.List;
+
 /**
  * Abstract class for a game player.
  */
@@ -45,4 +49,12 @@ public abstract class Player {
     public final void loose() {
         loose++;
     }
+
+    /**
+     * Pick a weapon from a list available of weapons.
+     *
+     * @param weapons the list available of weapons
+     * @return the picked weapon
+     */
+    public abstract Weapon pickWeapon(List<Weapon> weapons);
 }

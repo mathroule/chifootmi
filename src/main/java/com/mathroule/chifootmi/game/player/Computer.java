@@ -28,12 +28,13 @@ public final class Computer extends Player {
     }
 
     /**
-     * Get a random weapon from a list available of weapons.
+     * Pick a weapon from a list available of weapons.
      *
      * @param weapons the list available of weapons
-     * @return the selected weapon
+     * @return the picked weapon
      */
-    public Weapon getRandomWeapon(List<Weapon> weapons) {
+    @Override
+    public Weapon pickWeapon(List<Weapon> weapons) {
         int index = new Random().nextInt(weapons.size());
         return weapons.get(index);
     }

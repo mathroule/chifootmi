@@ -4,7 +4,8 @@ import com.mathroule.chifootmi.game.Statistics;
 import com.mathroule.chifootmi.game.match.Match;
 import com.mathroule.chifootmi.game.match.Result;
 import com.mathroule.chifootmi.game.player.Computer;
-import com.mathroule.chifootmi.game.player.Human;
+import com.mathroule.chifootmi.game.player.HumanCLI;
+import com.mathroule.chifootmi.game.player.Player;
 import com.mathroule.chifootmi.game.rule.Basic;
 import com.mathroule.chifootmi.game.rule.Extended;
 import com.mathroule.chifootmi.game.rule.Rules;
@@ -55,16 +56,12 @@ public class Main {
                 }
                 Rules rules = rule == 2 ? Extended.getInstance() : Basic.getInstance();
 
-                // Get number of rounds (play 1 round by default)
-                System.out.print("Enter number of rounds" + SHELL_INPUT);
-                int round = 1;
-                if (scanner.hasNextInt()) {
-                    round = scanner.nextInt();
-                }
-
-                // Play the match
-                Match match = null;
+                // Get available weapons for the selected game rules
                 List<Weapon> weapons = rules.getAvailableWeapons();
+
+                // Create players
+                Player player1 = null;
+                Player player2 = new Computer();
 
                 // Play Human vs Computer
                 if (mode == HUMAN_VS_COMPUTER) {
@@ -84,61 +81,38 @@ public class Main {
                     }
                     chooseWeapons += SHELL_INPUT;
 
-                    // Create the match
-                    Computer computer = new Computer();
-                    match = new Match.Builder(new Human(playerName), computer)
-                            .round(round)
-                            .rules(rules)
-                            .build();
-                    System.out.println(match);
-
-                    // Play all the rounds
-                    while (match.hasRemainingRound()) {
-                        // Get player weapon
-                        int move = 1;
-                        do {
-                            System.out.print(chooseWeapons);
-                            if (scanner.hasNextInt()) {
-                                move = scanner.nextInt();
-                            }
-                        } while (move < 1 || weapons.size() < move);
-                        Weapon humanWeapon = weapons.get(move - 1);
-
-                        // Generate computer weapon
-                        Weapon computerWeapon = computer.getRandomWeapon(weapons);
-
-                        // Play the round
-                        System.out.println(match.playRound(humanWeapon, computerWeapon));
-                    }
+                    player1 = new HumanCLI(playerName, scanner, chooseWeapons);
                 } else if (mode == COMPUTER_VS_COMPUTER) { // Play Computer vs Computer
-                    // Create the match
-                    Computer computer1 = new Computer();
-                    Computer computer2 = new Computer();
-                    match = new Match.Builder(computer1, computer2)
-                            .round(round)
-                            .rules(rules)
-                            .build();
-                    System.out.println(match);
+                    player1 = new Computer();
+                }
 
-                    // Play all the rounds
-                    while (match.hasRemainingRound()) {
-                        // Generate computers weapons
-                        Weapon weapon1 = computer1.getRandomWeapon(weapons);
-                        Weapon weapon2 = computer2.getRandomWeapon(weapons);
+                // Get number of rounds (play 1 round by default)
+                System.out.print("Enter number of rounds" + SHELL_INPUT);
+                int round = 1;
+                if (scanner.hasNextInt()) {
+                    round = scanner.nextInt();
+                }
 
-                        // Play the round
-                        System.out.println(match.playRound(weapon1, weapon2));
-                    }
+                // Create the match
+                Match match = new Match.Builder(player1, player2)
+                        .round(round)
+                        .rules(rules)
+                        .build();
+                System.out.println(match);
+
+                // Play all the rounds of the match
+                while (match.hasRemainingRound()) {
+                    // Play the round
+                    assert player1 != null;
+                    System.out.println(match.playRound(player1.pickWeapon(weapons), player2.pickWeapon(weapons)));
                 }
 
                 // Display match result
-                if (match != null) {
-                    Result result = match.getResult();
-                    System.out.println(result);
+                Result result = match.getResult();
+                System.out.println(result);
 
-                    // Save result for statistics
-                    Statistics.getInstance().add(result);
-                }
+                // Save result for statistics
+                Statistics.getInstance().add(result);
             }
 
             // Ask play again (default is true)
