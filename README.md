@@ -2,13 +2,27 @@
 
 Based on this [Rock, Paper, Scissors](Problem.md) problem.
 
-# Testing and coverage
+# Play the game
+
+To play the game, run:
+
+```
+gradlew build
+java -cp build\classes\main com.mathroule.chifootmi.Main
+```
+
+The generated test report, will be here: [./build/reports/tests/index.html](./build/reports/tests/index.html)
+
+
+# Testing
 
 To execute the unit tests, run:
 
 ```
 gradlew test
 ```
+
+The generated test report, will be here: [./build/reports/tests/index.html](./build/reports/tests/index.html)
 
 # Javadoc
 
