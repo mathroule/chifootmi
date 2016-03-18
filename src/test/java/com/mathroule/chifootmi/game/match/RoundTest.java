@@ -2,10 +2,13 @@ package com.mathroule.chifootmi.game.match;
 
 import com.mathroule.chifootmi.game.player.Computer;
 import com.mathroule.chifootmi.game.player.Human;
+import com.mathroule.chifootmi.game.player.HumanCLI;
 import com.mathroule.chifootmi.game.rule.Basic;
 import com.mathroule.chifootmi.game.weapon.Paper;
 import com.mathroule.chifootmi.game.weapon.Scissors;
 import org.junit.Test;
+
+import java.util.Scanner;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
@@ -15,7 +18,7 @@ import static org.junit.Assert.fail;
  */
 public class RoundTest {
 
-    private final Human human = new Human("Toto");
+    private final Human human = new HumanCLI("Toto", new Scanner(System.in), "");
 
     private final Computer computer = new Computer();
 

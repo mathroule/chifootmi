@@ -61,12 +61,12 @@ public class ComputerTest {
     }
 
     @Test
-    public void testGetRandomWeapon() throws Exception {
+    public void testPickWeaponWeapon() throws Exception {
         List<Weapon> weapons = new ArrayList<>();
         weapons.add(new Rock());
         weapons.add(new Paper());
         weapons.add(new Scissors());
         Computer computer = new Computer();
-        assertTrue(weapons.contains(computer.getRandomWeapon(weapons)));
+        assertTrue(weapons.contains(computer.pickWeapon(weapons)));
     }
 }

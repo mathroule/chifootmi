@@ -1,9 +1,13 @@
 package com.mathroule.chifootmi.game.player;
 
+import com.mathroule.chifootmi.game.weapon.Weapon;
+
+import java.util.List;
+
 /**
- * Implementation class for an human player.
+ * Abstract class for an human player.
  */
-public final class Human extends Player {
+public abstract class Human extends Player {
 
     /**
      * Human player constructor using name.
@@ -13,4 +17,13 @@ public final class Human extends Player {
     public Human(String name) {
         super(name);
     }
+
+    /**
+     * Pick a weapon from a list available of weapons.
+     *
+     * @param weapons the list available of weapons
+     * @return the picked weapon
+     */
+    @Override
+    public abstract Weapon pickWeapon(List<Weapon> weapons);
 }

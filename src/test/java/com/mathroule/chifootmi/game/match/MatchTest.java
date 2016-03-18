@@ -2,10 +2,13 @@ package com.mathroule.chifootmi.game.match;
 
 import com.mathroule.chifootmi.game.player.Computer;
 import com.mathroule.chifootmi.game.player.Human;
+import com.mathroule.chifootmi.game.player.HumanCLI;
 import com.mathroule.chifootmi.game.weapon.Paper;
 import com.mathroule.chifootmi.game.weapon.Rock;
 import com.mathroule.chifootmi.game.weapon.Scissors;
 import org.junit.Test;
+
+import java.util.Scanner;
 
 import static org.junit.Assert.*;
 
@@ -14,9 +17,9 @@ import static org.junit.Assert.*;
  */
 public class MatchTest {
 
-    private final Human human1 = new Human("Tom");
+    private final Human human1 = new HumanCLI("Tom", new Scanner(System.in), "");
 
-    private final Human human2 = new Human("Bob");
+    private final Human human2 = new HumanCLI("Bob", new Scanner(System.in), "");
 
     private final Computer computer1 = new Computer();
 
