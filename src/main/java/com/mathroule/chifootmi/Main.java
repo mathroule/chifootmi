@@ -19,7 +19,6 @@ import java.util.Scanner;
  */
 public class Main {
 
-    // TODO improve CLI
     private static final String SHELL_INPUT = "\n> ";
 
     private static final int HUMAN_VS_COMPUTER = 1;
