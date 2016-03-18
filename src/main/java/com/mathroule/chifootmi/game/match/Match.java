@@ -116,10 +116,10 @@ public final class Match extends RuledVersus {
      */
     public final static class Builder implements IBuilder<Match> {
 
-        protected final Player player1;
-        protected final Player player2;
+        private final Player player1;
+        private final Player player2;
         private int round = 1;
-        protected Rules rules = new Basic();
+        private Rules rules = new Basic();
 
         /**
          * Build match with two players, 1 round and basic rules.

@@ -17,11 +17,11 @@ import static org.junit.Assert.fail;
  */
 public class ResultTest {
 
-    private Human human1 = new Human("Tom");
+    private final Human human1 = new Human("Tom");
 
-    private Human human2 = new Human("Toto");
+    private final Human human2 = new Human("Toto");
 
-    private Computer computer = new Computer();
+    private final Computer computer = new Computer();
 
     @Test
     public void testResult() throws Exception {

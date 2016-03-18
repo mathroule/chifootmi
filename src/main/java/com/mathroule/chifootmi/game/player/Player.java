@@ -5,7 +5,7 @@ package com.mathroule.chifootmi.game.player;
  */
 public abstract class Player {
 
-    private String name;
+    private final String name;
 
     private int win;
 
