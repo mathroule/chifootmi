@@ -8,7 +8,7 @@ import java.util.Scanner;
 /**
  * Implementation class for an human player playing in CLI.
  */
-public final class HumanCLI extends HumanDecorator {
+public final class HumanCLI extends Human {
 
     /**
      * The input scanner.
