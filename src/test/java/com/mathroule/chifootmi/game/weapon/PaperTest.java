@@ -1,14 +1,8 @@
 package com.mathroule.chifootmi.game.weapon;
 
-import com.mathroule.chifootmi.game.weapon.Paper;
-import com.mathroule.chifootmi.game.weapon.Rock;
-import com.mathroule.chifootmi.game.weapon.Scissors;
-import com.mathroule.chifootmi.game.weapon.Weapon;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * Test the paper class.
