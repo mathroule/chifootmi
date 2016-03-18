@@ -49,7 +49,7 @@ public class Round extends RuledVersus {
     /**
      * Round constructor from a builder.
      *
-     * @param builder the match builder
+     * @param builder the round builder
      */
     private Round(Builder builder) {
         super(builder.player1, builder.player2, builder.rules);
@@ -135,10 +135,10 @@ public class Round extends RuledVersus {
         /**
          * Build a round with two players, with the weapons and basic rules.
          *
-         * @param player1 the first player of the match
-         * @param weapon1 the first player weapon for the match
-         * @param player2 the second player of the match
-         * @param weapon2 the second player weapon for the match
+         * @param player1 the first player of the round
+         * @param weapon1 the first player weapon for the round
+         * @param player2 the second player of the round
+         * @param weapon2 the second player weapon for the round
          */
         public Builder(Player player1, Weapon weapon1, Player player2, Weapon weapon2) {
             this.player1 = player1;

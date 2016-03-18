@@ -29,7 +29,7 @@ public class ResultTest {
             List<Round> rounds = new ArrayList<>();
             rounds.add(new Round.Builder(human1, new Paper(), human2, new Paper()).build());
             rounds.add(new Round.Builder(human1, new Scissors(), human2, new Paper()).round(2).build());
-            Result result = new Result(human1, human2, rounds);
+            Result result = new Result.Builder(human1, human2).rounds(rounds).build();
             assertEquals(1, result.getDraw());
             assertEquals("--- Match Tom vs Toto ---\n" +
                     "Draw 1 times\n" +
@@ -43,8 +43,7 @@ public class ResultTest {
     @Test
     public void testResultWithNullPlayer1() throws Exception {
         try {
-            List<Round> rounds = new ArrayList<>();
-            new Result(null, computer, rounds);
+            new Result.Builder(null, computer).build();
             fail("A NullPointerException should be thrown");
         } catch (NullPointerException exception) {
             assertEquals("Player 1 should not be null", exception.getMessage());
@@ -54,8 +53,7 @@ public class ResultTest {
     @Test
     public void testResultWithNullPlayer2() throws Exception {
         try {
-            List<Round> rounds = new ArrayList<>();
-            new Result(human1, null, rounds);
+            new Result.Builder(human1, null).build();
             fail("A NullPointerException should be thrown");
         } catch (NullPointerException exception) {
             assertEquals("Player 2 should not be null", exception.getMessage());
@@ -65,8 +63,7 @@ public class ResultTest {
     @Test
     public void testResultWithNullPlayers() throws Exception {
         try {
-            List<Round> rounds = new ArrayList<>();
-            new Result(null, null, rounds);
+            new Result.Builder(null, null).build();
             fail("A NullPointerException should be thrown");
         } catch (NullPointerException exception) {
             assertEquals("Player 1 should not be null", exception.getMessage());
@@ -76,7 +73,7 @@ public class ResultTest {
     @Test
     public void testResultWithNullRounds() throws Exception {
         try {
-            new Result(human1, computer, null);
+            new Result.Builder(human1, computer).rounds(null).build();
             fail("A NullPointerException should be thrown");
         } catch (NullPointerException exception) {
             assertEquals("Rounds should not be null", exception.getMessage());
@@ -89,7 +86,7 @@ public class ResultTest {
         rounds.add(new Round.Builder(human1, new Paper(), human2, new Paper()).build());
         rounds.add(new Round.Builder(human1, new Paper(), human2, new Paper()).build());
         rounds.add(new Round.Builder(human1, new Scissors(), human2, new Paper()).build());
-        Result result = new Result(human1, computer, rounds);
+        Result result = new Result.Builder(human1, computer).rounds(rounds).build();
         assertEquals(2, result.getDraw());
     }
 }
