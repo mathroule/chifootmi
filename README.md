@@ -32,3 +32,8 @@ gradlew javadoc
 ```
 
 The generated Javadoc, will be here: [./build/docs/javadoc/index.html](./build/docs/javadoc/index.html)
+
+# Enhancements
+
+* Extend basic computer to use an IA
+* Separate game engine from CLI to be extended with new GUI
