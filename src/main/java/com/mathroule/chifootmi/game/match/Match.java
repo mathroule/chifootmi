@@ -119,7 +119,7 @@ public final class Match extends RuledVersus {
         private final Player player1;
         private final Player player2;
         private int round = 1;
-        private Rules rules = new Basic();
+        private Rules rules = Basic.getInstance();
 
         /**
          * Build match with two players, 1 round and basic rules.

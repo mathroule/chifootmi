@@ -13,12 +13,12 @@ public final class Extended extends Rules {
     private final Rules base;
 
     /**
-     * Constructor of the extended game rules (i.e. Rock-paper-scissors-lizard-Spock).
+     * Constructor of the extended game rules as singleton (i.e. Rock-paper-scissors-lizard-Spock).
      */
-    public Extended() {
+    private Extended() {
         super();
 
-        base = new Basic();
+        base = Basic.getInstance();
 
         // Rock crushes lizard
         this.add(new Rule(new Rock(), "crushes", new Lizard()));
@@ -48,5 +48,13 @@ public final class Extended extends Rules {
         weapons.add(new Lizard());
         weapons.add(new Spock());
         return weapons;
+    }
+
+    private static class ExtendedHolder {
+        private final static Extended instance = new Extended();
+    }
+
+    public static Extended getInstance() {
+        return ExtendedHolder.instance;
     }
 }

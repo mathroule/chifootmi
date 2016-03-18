@@ -130,7 +130,7 @@ public class Round extends RuledVersus {
         private final Weapon weapon1;
         private final Weapon weapon2;
         private int round = 1;
-        private Rules rules = new Basic();
+        private Rules rules = Basic.getInstance();
 
         /**
          * Build a round with two players, with the weapons and basic rules.

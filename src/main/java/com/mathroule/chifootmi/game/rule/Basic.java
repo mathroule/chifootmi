@@ -10,14 +10,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Implement the basic games rules (i.e. Rock-paper-scissors).
+ * Implement the basic games rules as singleton (i.e. Rock-paper-scissors).
  */
 public final class Basic extends Rules {
 
     /**
      * Constructor of the basic game rules (i.e. Rock-paper-scissors).
      */
-    public Basic() {
+    private Basic() {
         // Rock crushes scissors
         this.add(new Rule(new Rock(), "crushes", new Scissors()));
 
@@ -35,5 +35,13 @@ public final class Basic extends Rules {
         weapons.add(new Paper());
         weapons.add(new Scissors());
         return weapons;
+    }
+
+    private static class BasicHolder {
+        private final static Basic instance = new Basic();
+    }
+
+    public static Basic getInstance() {
+        return BasicHolder.instance;
     }
 }

@@ -19,6 +19,8 @@ public class RoundTest {
 
     private final Computer computer = new Computer();
 
+    private final Basic basic = Basic.getInstance();
+
     @Test
     public void tesRoundWithDefaultValues() throws Exception {
         try {
@@ -39,7 +41,7 @@ public class RoundTest {
             // Test round won by computer
             Round round2 = new Round.Builder(human, new Paper(), computer, new Scissors())
                     .round(2)
-                    .rules(new Basic()).build();
+                    .rules(basic).build();
             assertEquals(2, round2.getRound());
             assertEquals(human, round2.getPlayer1());
             assertEquals(computer, round2.getPlayer2());
@@ -54,7 +56,7 @@ public class RoundTest {
         try {
             new Round.Builder(human, new Scissors(), computer, new Paper())
                     .round(0)
-                    .rules(new Basic()).build();
+                    .rules(basic).build();
             fail("An IllegalArgumentException should be thrown");
         } catch (IllegalArgumentException exception) {
             assertEquals("Round number must be equal or greater than one", exception.getMessage());
@@ -63,7 +65,7 @@ public class RoundTest {
         try {
             new Round.Builder(human, new Scissors(), computer, new Paper())
                     .round(-5)
-                    .rules(new Basic()).build();
+                    .rules(basic).build();
             fail("An IllegalArgumentException should be thrown");
         } catch (IllegalArgumentException exception) {
             assertEquals("Round number must be equal or greater than one", exception.getMessage());

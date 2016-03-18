@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
  */
 public class BasicTest {
 
-    private final Basic basic = new Basic();
+    private final Basic basic = Basic.getInstance();
 
     @Test
     public void testCompareNulls() throws Exception {

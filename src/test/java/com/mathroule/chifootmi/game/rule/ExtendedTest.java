@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
  */
 public class ExtendedTest {
 
-    private final Extended extended = new Extended();
+    private final Extended extended = Extended.getInstance();
 
     @Test
     public void testCompareNulls() throws Exception {
