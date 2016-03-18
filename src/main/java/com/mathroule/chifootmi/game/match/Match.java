@@ -115,6 +115,7 @@ public final class Match extends RuledVersus {
      * The match builder.
      */
     public final static class Builder implements IBuilder<Match> {
+        // TODO use builder inheritance @see: http://stackoverflow.com/questions/21086417/builder-pattern-and-inheritance
 
         private final Player player1;
         private final Player player2;
